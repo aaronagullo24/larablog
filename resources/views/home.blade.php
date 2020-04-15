@@ -6,6 +6,6 @@
     <title>Mi primera vista</title>
 </head>
 <body>
-    <h1>Hola Mundo - <?php echo "hola Mundo ".$nombre?></h1>
+    <h1>Hola Mundo - <?php echo "hola Mundo ".$nombre." ".$apellido?></h1>
 </body>
 </html>

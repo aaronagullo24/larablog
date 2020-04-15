@@ -30,9 +30,8 @@ Route::get('/sobre-nosotros-en-la-web', function () {
 })->name("nosotros");
 
 
-Route::get('home', function() {
-    $nombre="Aaron";
-    return view("home");
+Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="Manolo") {
+    return view("home",['nombre'=>$nombre,'apellido'=>$apellido]);
 })->name("home");
 
 
