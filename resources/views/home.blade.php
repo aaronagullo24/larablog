@@ -6,6 +6,7 @@
     <title>Mi primera vista</title>
 </head>
 <body>
-    <h1>Hola Mundo - <?php echo "hola Mundo ".$nombre." ".$apellido?></h1>
+    <h1>Hola Mundo - {!! "hola Mundo $nombre $apellido <script>alert('hola Mundo')</script>"!!}</h1>
 </body>
+
 </html>
