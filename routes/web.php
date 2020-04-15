@@ -22,6 +22,10 @@ Route::get('/test', function () {
 });
 
 Route::get('/hola/{nombre?}', function ($nombre = "juan") {
-    return "hola $nombre";
+    return "hola $nombre conocenos: <a href='".route("nosotros")."'>nosotros</a>" ;
 });
+
+Route::get('/sobre-nosotros-en-la-web', function () {
+    return "<h1>Toda la informacion sobre nosotros</h1>";
+})->name("nosotros");
 
