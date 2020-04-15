@@ -10,8 +10,30 @@
 <body>
     <h1>Hola Mundo - {!! "hola Mundo $nombre $apellido"!!}</h1>
     <ul>
-        @forelse ($posts2 as $post)
-        <li> {{$post}} </li>
+
+        @isset($posts2)
+        isset
+        @endisset
+
+        @empty($posts2)
+        vacio-empty
+        @endempty
+
+        @forelse ($posts as $post)
+
+        <li>
+            @if($loop->first)
+            Primero:
+
+
+            @elseif($loop->last)
+            Ultimo:
+            @else
+            Medio:
+            @endif
+
+            {{$post}}
+        </li>
         @empty
         <li>Vacio</li>
         @endforelse

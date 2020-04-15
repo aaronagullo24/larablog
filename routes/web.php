@@ -33,7 +33,7 @@ Route::get('/sobre-nosotros-en-la-web', function () {
 Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="Manolo") {
 
     $posts=["Post1","Post2","POST3"];
-    $posts2=[];
+    $posts2=null;
 
     return view("home",['nombre'=>$nombre,'apellido'=>$apellido,'posts'=>$posts,'posts2'=>$posts2]);
 })->name("home");
