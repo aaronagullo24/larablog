@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+/*
 Route::get('/test', function () {
     return "hola mundo";
 });
@@ -37,5 +37,7 @@ Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="M
 
     return view("home",['nombre'=>$nombre,'apellido'=>$apellido,'posts'=>$posts,'posts2'=>$posts2]);
 })->name("home");
+*/
 
+Route::get('post','PostController@index');
 
