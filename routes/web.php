@@ -29,3 +29,10 @@ Route::get('/sobre-nosotros-en-la-web', function () {
     return "<h1>Toda la informacion sobre nosotros</h1>";
 })->name("nosotros");
 
+
+Route::get('home', function() {
+    $nombre="Aaron";
+    return view("home");
+})->name("home");
+
+
