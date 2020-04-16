@@ -1,21 +1,23 @@
 <link rel="stylesheet" href="{{asset("css/app.css")}}">
 <script src="{{ asset("js/app.js")}}"></script>
 
-
-
-@if ($errors->any())
-@foreach ($errors->all() as $error)
-    {{$error}}
-@endforeach
-    
-@endif
-
 <div class="container">
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <div class="alert alert-danger">
+            {{$error}}
+        </div>
+    @endforeach
+@endif
 <form action="{{route("post.store")}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="title">Titulo</label>
         <input class="form-control" type="text" id="title" name="title">
+
+        @error('title')
+            <small class="text-danger">{{$message}}</small>
+        @enderror
     </div>
 
 
