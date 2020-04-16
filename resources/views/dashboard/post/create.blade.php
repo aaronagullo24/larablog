@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="{{asset("css/app.css")}}">
+<script src="{{ asset("js/app.js")}}"></script>
+
+
+<div class="container">
 <form action="{{route("post.store")}}" method="POST">
     @csrf
     <div class="form-group">
@@ -19,3 +24,4 @@
     <input type="submit" value="Enviar" class="btn btn-primary">
 
 </form>
+</div>
