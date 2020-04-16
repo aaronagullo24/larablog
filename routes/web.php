@@ -40,6 +40,6 @@ Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="M
 */
 
 
-Route::resource('admin/post', 'dashboard\PostController');
+Route::resource('dashboard/post', 'dashboard\PostController');
 
 
