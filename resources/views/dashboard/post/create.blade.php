@@ -2,13 +2,8 @@
 @extends('dashboard.post.master')
 
 @section('content')
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div class="alert alert-danger">
-                {{$error}}
-            </div>
-        @endforeach
-    @endif
+
+@include('dashboard.post.parciales.validation-error')
     <form action="{{route("post.store")}}" method="POST">
         @csrf
     
