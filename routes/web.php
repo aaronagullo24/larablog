@@ -39,5 +39,7 @@ Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="M
 })->name("home");
 */
 
-Route::get('post','PostController@index');
+
+Route::resource('admin/post', 'dashboard\PostController');
+
 
