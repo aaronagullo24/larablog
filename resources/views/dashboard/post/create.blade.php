@@ -2,6 +2,14 @@
 <script src="{{ asset("js/app.js")}}"></script>
 
 
+
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+    {{$error}}
+@endforeach
+    
+@endif
+
 <div class="container">
 <form action="{{route("post.store")}}" method="POST">
     @csrf

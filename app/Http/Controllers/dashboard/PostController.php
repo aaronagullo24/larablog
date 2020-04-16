@@ -35,7 +35,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //echo "Hola Store: " .$request->input("title");
+        $request->validate([
+            'title'=>'required|min:5|max:500'
+        ]);
 
         echo "Hola Store: " . $request->title;
         //echo "Hola Store: " .$request("title");
