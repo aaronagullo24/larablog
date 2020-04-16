@@ -35,7 +35,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        echo "Hola Store";
+        //echo "Hola Store: " .$request->input("title");
+
+        echo "Hola Store: " . $request->title;
+        //echo "Hola Store: " .$request("title");
     }
 
     /**
