@@ -9,14 +9,12 @@
     <title> Modulo </title>
 </head>
 <body>
-  <div class="container">
-  @if (session('status'))
-  <div class="alert alert-success">
-    {{session('status')}}
-  </div>  
-  @endif
 
-    
+
+  @include('dashboard.post.parciales.nav-header-main')
+
+  <div class="container">
+    @include('dashboard.post.parciales.session-flash-status')
     @yield('content')
     </div>
 </body>
