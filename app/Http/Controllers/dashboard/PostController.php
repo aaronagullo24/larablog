@@ -48,9 +48,7 @@ class PostController extends Controller
 
 
         Post::create($request->validated());
-        //echo "Hola Store: " .$request("title");
-
-        return back();
+        return back()->with('status','Post Creado con exito');
     }
 
     /**
