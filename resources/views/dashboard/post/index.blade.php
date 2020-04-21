@@ -6,8 +6,6 @@
     Crear
 </a>
 
-
-
 <table class="table">
     <thead>
         <tr>
@@ -59,4 +57,6 @@
 
     </tbody>
 </table>
+
+{{$posts->links()}}
 @endsection
