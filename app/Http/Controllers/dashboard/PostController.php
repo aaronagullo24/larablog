@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Post;
 use App\Category;
+use App\PostImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
@@ -29,8 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories=Category::pluck('id','title');
-        return view("dashboard.post.create",['post'=>new Post(),'categories'=>$categories]);
+        $categories = Category::pluck('id', 'title');
+        return view("dashboard.post.create", ['post' => new Post(), 'categories' => $categories]);
     }
 
     /**
@@ -76,8 +77,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::pluck('id','title');
-        return view('dashboard.post.edit', ["post" => $post,'categories'=>$categories]);
+        $categories = Category::pluck('id', 'title');
+        return view('dashboard.post.edit', ["post" => $post, 'categories' => $categories]);
     }
 
     /**
@@ -92,19 +93,23 @@ class PostController extends Controller
         //echo "hola update";
 
         $post->update($request->validated());
-        return back()->with('status','Post actualizado con exito');
+        return back()->with('status', 'Post actualizado con exito');
     }
 
     public function image(Request $request, Post $post)
-    {  
+    {
         //echo "imagen";
         $request->validate([
-            'image'=>'required|mimes:jpeg,bmp,png|max:10240'
+            'image' => 'required|mimes:jpeg,bmp,png|max:10240'
         ]);
 
-        $filename= time().".". $request->image->extension();
+        $filename = time() . "." . $request->image->extension();
         //echo $filename;
-        $request->image->move(public_path('image'),$filename);
+        $request->image->move(public_path('image'), $filename);
+
+
+        PostImage::create(['image' => $filename, 'post_id' => $post->id]);
+        return back()->with('status', 'Imagen subida con exito');
     }
 
     /**
@@ -118,7 +123,6 @@ class PostController extends Controller
         //echo "eliminar";
 
         $post->delete();
-        return back()->with('status','Post eliminado con exito');
-
+        return back()->with('status', 'Post eliminado con exito');
     }
 }

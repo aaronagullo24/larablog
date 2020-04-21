@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Category;
+use App\PostImage;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -12,5 +13,10 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function image()
+    {
+        return $this->hasone(PostImage::class);
     }
 }
