@@ -51,6 +51,7 @@
             </td>
             <td>
                 <a href="{{ route('post.show',$post->id)}}" class="btn btn-primary">Ver</a>
+                <a href="{{ route('post.edit',$post->id)}}" class="btn btn-primary">Actualizar</a>
             </td>
         </tr>
         @endforeach
