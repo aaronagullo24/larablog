@@ -3,10 +3,10 @@
 @section('content')
 
 @include('dashboard.parciales.validation-error')
-<form action="{{route("post.update",$post->id)}}" method="POST">
+<form action="{{route("category.update",$category->id)}}" method="POST">
 
     @method('PUT')
 
-    @include('dashboard.post._form')
+    @include('dashboard.category._form')
 </form>
 @endsection

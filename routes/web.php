@@ -43,5 +43,6 @@ Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="M
 
 
 Route::resource('dashboard/post', 'dashboard\PostController');
+Route::resource('dashboard/category', 'dashboard\CategoryController');
 
 

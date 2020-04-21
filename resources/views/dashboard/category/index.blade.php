@@ -1,8 +1,8 @@
-@extends('dashboard.post.master')
+@extends('dashboard.category.master')
 
 @section('content')
 
-<a class="btn btn-success mt-3 mb-3" href="{{route('post.create')}}">
+<a class="btn btn-success mt-3 mb-3" href="{{route('category.create')}}">
     Crear
 </a>
 
@@ -15,9 +15,7 @@
             <td>
                 Titulo
             </td>
-            <td>
-                Posteado
-            </td>
+            
             <td>
                 Creacion
             </td>
@@ -32,29 +30,27 @@
 
     <tbody>
 
-        @foreach ($posts as $post)
+        @foreach ($categories as $category)
         <tr>
             <td>
-                {{$post->id}}
+                {{$category->id}}
+            </td>
+    
+            <td>
+                {{$category->title}}
             </td>
             <td>
-                {{$post->title}}
+                {{$category->created_at->format('d-m-y')}}
             </td>
             <td>
-                {{$post->posted}}
+                {{$category->update_at}}
             </td>
             <td>
-                {{$post->created_at->format('d-m-y')}}
-            </td>
-            <td>
-                {{$post->update_at}}
-            </td>
-            <td>
-                <a href="{{ route('post.show',$post->id)}}" class="btn btn-primary">Ver</a>
-                <a href="{{ route('post.edit',$post->id)}}" class="btn btn-primary">Actualizar</a>
+                <a href="{{ route('category.show',$category->id)}}" class="btn btn-primary">Ver</a>
+                <a href="{{ route('category.edit',$category->id)}}" class="btn btn-primary">Actualizar</a>
 
                 <button class="btn btn-danger" type="submit" data-toggle="modal" data-target="#deleteModal"
-                    data-id="{{ $post->id }}">Delete</button>
+                    data-id="{{ $category->id }}">Delete</button>
 
             </td>
         </tr>
@@ -63,7 +59,7 @@
     </tbody>
 </table>
 
-{{$posts->links()}}
+{{$categories->links()}}
 
 
 
@@ -82,8 +78,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <form id="formDelete" method="post" action="{{ route('post.destroy',0)}}"
-                    data-action="{{route('post.destroy',0)}}">
+                <form id="formDelete" method="POST" action="{{ route('category.destroy',0)}}"
+                    data-action="{{route('category.destroy',0)}}">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-danger">Borrar</button>
@@ -103,7 +99,7 @@
             $('#formDelete').attr('action', action)
             console.log(action)
             var modal = $(this)
-            modal.find('.modal-title').text('vas a borrar el post: ' + id)
+            modal.find('.modal-title').text('vas a borrar la categoria: ' + id)
         });
     };
 </script>
