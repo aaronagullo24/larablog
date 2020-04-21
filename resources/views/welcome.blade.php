@@ -83,6 +83,9 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                @auth
+                {{auth()->user()}}
+                @endauth
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>

@@ -1,43 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi primera vista</title>
-</head>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
 
-<body>
-    <h1>Hola Mundo - {!! "hola Mundo $nombre $apellido"!!}</h1>
-    <ul>
-
-        @isset($posts2)
-        isset
-        @endisset
-
-        @empty($posts2)
-        vacio-empty
-        @endempty
-
-        @forelse ($posts as $post)
-
-        <li>
-            @if($loop->first)
-            Primero:
-
-
-            @elseif($loop->last)
-            Ultimo:
-            @else
-            Medio:
-            @endif
-
-            {{$post}}
-        </li>
-        @empty
-        <li>Vacio</li>
-        @endforelse
-    </ul>
-</body>
-
-</html>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                        {{auth()->user()->name}}
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
