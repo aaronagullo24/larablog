@@ -50,7 +50,7 @@
                 {{$post->update_at}}
             </td>
             <td>
-                
+                <a href="{{ route('post.show',$post->id)}}" class="btn btn-primary">Ver</a>
             </td>
         </tr>
         @endforeach
