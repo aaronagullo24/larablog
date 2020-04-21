@@ -16,6 +16,9 @@
                 Titulo
             </td>
             <td>
+                categorias
+            </td>
+            <td>
                 Posteado
             </td>
             <td>
@@ -41,13 +44,16 @@
                 {{$post->title}}
             </td>
             <td>
+                {{$post->category->title}}
+            </td>
+            <td>
                 {{$post->posted}}
             </td>
             <td>
                 {{$post->created_at->format('d-m-y')}}
             </td>
             <td>
-                {{$post->update_at}}
+                {{$post->updated_at->format('d-m-y')}}
             </td>
             <td>
                 <a href="{{ route('post.show',$post->id)}}" class="btn btn-primary">Ver</a>

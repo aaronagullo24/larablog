@@ -29,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("dashboard.post.create",['post'=>new Post()]);
+        $categories=Category::pluck('id','title');
+        return view("dashboard.post.create",['post'=>new Post(),'categories'=>$categories]);
     }
 
     /**

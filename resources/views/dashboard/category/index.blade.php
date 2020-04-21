@@ -43,7 +43,7 @@
                 {{$category->created_at->format('d-m-y')}}
             </td>
             <td>
-                {{$category->update_at}}
+                {{$category->updated_at->format('d-m-y')}}
             </td>
             <td>
                 <a href="{{ route('category.show',$category->id)}}" class="btn btn-primary">Ver</a>
