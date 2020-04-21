@@ -23,7 +23,13 @@
             <option value="{{$id}}">{{$title}}</option>
         @endforeach
     </select>
+</div>
 
+<div class="form-group">
+    <label for="posted">Posted</label>
+    <select name="posted" class="form-control" id="posted">
+        @include('dashboard.parciales.option-yes-not')
+    </select>
 </div>
 
 <div class="form-group">
