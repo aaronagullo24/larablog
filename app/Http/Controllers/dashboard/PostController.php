@@ -77,7 +77,6 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::pluck('id','title');
-        
         return view('dashboard.post.edit', ["post" => $post,'categories'=>$categories]);
     }
 
@@ -93,8 +92,19 @@ class PostController extends Controller
         //echo "hola update";
 
         $post->update($request->validated());
-
         return back()->with('status','Post actualizado con exito');
+    }
+
+    public function image(Request $request, Post $post)
+    {  
+        //echo "imagen";
+        $request->validate([
+            'image'=>'required|mimes:jpeg,bmp,png|max:10240'
+        ]);
+
+        $filename= time().".". $request->image->extension();
+        //echo $filename;
+        $request->image->move(public_path('image'),$filename);
     }
 
     /**

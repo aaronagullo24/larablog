@@ -44,5 +44,6 @@ Route::get('home/{nombre?}/{apellido?}', function($nombre="Defecto",$apellido="M
 
 Route::resource('dashboard/post', 'dashboard\PostController');
 Route::resource('dashboard/category', 'dashboard\CategoryController');
+Route::post('dashboard/post/{post}/image','dashboard\PostController@image')->name('post.image');
 
 
