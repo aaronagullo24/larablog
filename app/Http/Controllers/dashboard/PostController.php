@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("dashboard.post.create");
+        return view("dashboard.post.create",['post'=>new Post()]);
     }
 
     /**
