@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create',['category' => new Category()]);
+        return view('dashboard.category.create', ['category' => new Category()]);
     }
 
     /**
@@ -39,7 +45,7 @@ class CategoryController extends Controller
     public function store(StoreCategoryPost $request)
     {
         Category::create($request->validated());
-        return back()->with('status','Categoria creado con exito');
+        return back()->with('status', 'Categoria creado con exito');
     }
 
     /**
@@ -50,7 +56,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('dashboard.category.show',["category"=>$category]);
+        return view('dashboard.category.show', ["category" => $category]);
     }
 
     /**
@@ -61,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('dashboard.category.edit',["category"=>$category]);
+        return view('dashboard.category.edit', ["category" => $category]);
     }
 
     /**
@@ -74,7 +80,7 @@ class CategoryController extends Controller
     public function update(StoreCategoryPost $request, Category $category)
     {
         $category->update($request->validated());
-        return back()->with('status','Categoria actualizada con exito');
+        return back()->with('status', 'Categoria actualizada con exito');
     }
 
     /**
@@ -86,6 +92,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return back()->with('status','Categoria elimina con exito');
+        return back()->with('status', 'Categoria elimina con exito');
     }
 }
