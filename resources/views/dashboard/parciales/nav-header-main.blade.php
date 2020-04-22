@@ -16,7 +16,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{route('post.index')}}">Post</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{{route('category.index')}}">Categorias</a>
+          <a class="dropdown-item" href="{{route('category.index')}}">Categoria</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{route('user.index')}}">usuario</a>
 
         </div>
       </li>
