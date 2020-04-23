@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         //echo "Hola mundo api";
         $post = Post::orderBy('created_at','desc')->paginate(1);
-        return response()->json($post);
+        return response()->json($post,404);
     }
 
     /**
@@ -49,7 +49,6 @@ class PostController extends Controller
      */
     public function show(Post $Post)
     {
-        
         return response()->json($Post);
     }
 
