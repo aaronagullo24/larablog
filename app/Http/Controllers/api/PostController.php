@@ -5,8 +5,10 @@ namespace App\Http\Controllers\api;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\api\ApiResponseController;
+//
 
-class PostController extends Controller
+class PostController extends ApiResponseController
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +23,7 @@ class PostController extends Controller
         join('categories','categories.id','=','posts.category_id')->
         select('posts.*','categories.title as category','post_images.image')->
         orderBy('posts.created_at','desc')->paginate(1);
-        return response()->json($post,200);
+        return $this->successResponse($post);
     }
 
 
@@ -46,7 +48,8 @@ class PostController extends Controller
     {
         $Post->image;
         $Post->category;
-        return response()->json($Post);
+        return $this->successResponse($Post);
+      
     }
 
     
