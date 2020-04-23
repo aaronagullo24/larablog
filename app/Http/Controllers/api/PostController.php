@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -14,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo  "Hola mundo api";
+        //echo "Hola mundo api";
+        $post = Post::orderBy('created_at','desc')->paginate(1);
+        return response()->json($post);
     }
 
     /**
@@ -44,9 +47,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $Post)
     {
-        //
+        
+        return response()->json($Post);
     }
 
     /**
