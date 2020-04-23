@@ -16,8 +16,12 @@ class PostController extends Controller
     public function index()
     {
         //echo "Hola mundo api";
-        $post = Post::orderBy('created_at','desc')->paginate(1);
-        return response()->json($post,404);
+        $post = Post::
+        join('post_images','post_images.post_id','=','posts.id')->
+        join('categories','categories.id','=','posts.category_id')->
+        select('posts.*','categories.title as category','post_images.image')->
+        orderBy('posts.created_at','desc')->paginate(1);
+        return response()->json($post,200);
     }
 
     /**
@@ -49,6 +53,8 @@ class PostController extends Controller
      */
     public function show(Post $Post)
     {
+        $Post->image;
+        $Post->category;
         return response()->json($Post);
     }
 
