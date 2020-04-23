@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\api\ApiResponseController;
@@ -18,25 +19,10 @@ class PostController extends ApiResponseController
     public function index()
     {
         //echo "Hola mundo api";
-        $post = Post::
-        join('post_images','post_images.post_id','=','posts.id')->
-        join('categories','categories.id','=','posts.category_id')->
-        select('posts.*','categories.title as category','post_images.image')->
-        orderBy('posts.created_at','desc')->paginate(10);
+        $post = Post::join('post_images', 'post_images.post_id', '=', 'posts.id')->join('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.title as category', 'post_images.image')->orderBy('posts.created_at', 'desc')->paginate(10);
         return $this->successResponse($post);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -49,8 +35,14 @@ class PostController extends ApiResponseController
         $Post->image;
         $Post->category;
         return $this->successResponse($Post);
-      
     }
 
-    
+    public function category(Category $category)
+    {
+        //dd($category->post());
+        return $this->successResponse([
+            "posts" => $category->post()->paginate(10),
+            "category" => $category
+        ]);
+    }
 }

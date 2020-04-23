@@ -19,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::resource('post', 'api\PostController')->only([
     'index', 'show'
 ]);
+
+Route::get('post/{category}/category','api\PostController@category');
