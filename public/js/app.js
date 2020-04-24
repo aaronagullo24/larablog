@@ -49800,7 +49800,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'hola Vue'
+    message: 'hola Vue',
+    posts: ['Titulo 1', 'Titulo 2', 'Titulo 3', 'Titulo 4', 'Titulo 5']
   }
 });
 
