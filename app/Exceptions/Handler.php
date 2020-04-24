@@ -2,11 +2,16 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Traits\ApiResponse;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponse;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -50,6 +55,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        //dd($exception);
+
+        if ($exception instanceof NotFoundHttpException) {
+            return $this->errorResponse("Pagina no encontrada", $code = 404, $msj = "Pagina no encontrada");
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            return $this->errorResponse("Recurso no encontrado", $code = 404, $msj = "Recurso no encontrado");
+        }
+
         return parent::render($request, $exception);
     }
 }
