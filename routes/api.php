@@ -21,3 +21,5 @@ Route::resource('post', 'api\PostController')->only([
 ]);
 
 Route::get('post/{category}/category','api\PostController@category');
+Route::get('category','api\CategoryController@index');
+Route::get('category/all','api\CategoryController@all');
