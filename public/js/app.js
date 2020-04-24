@@ -49801,7 +49801,27 @@ var app = new Vue({
   el: '#app',
   data: {
     message: 'hola Vue',
-    posts: ['Titulo 1', 'Titulo 2', 'Titulo 3', 'Titulo 4', 'Titulo 5']
+    posts: [{
+      title: 'Titulo 1',
+      image: '1587497227.png',
+      content: 'Hola buenos dias'
+    }, {
+      title: 'Titulo 2',
+      image: '1587497227.png',
+      content: 'Hola buenos dias'
+    }, {
+      title: 'Titulo 3',
+      image: '1587497227.png',
+      content: 'Hola buenos dias'
+    }, {
+      title: 'Titulo 4',
+      image: '1587497227.png',
+      content: 'Hola buenos dias'
+    }, {
+      title: 'Titulo 5',
+      image: '1587497227.png',
+      content: 'Hola buenos dias'
+    }]
   }
 });
 
