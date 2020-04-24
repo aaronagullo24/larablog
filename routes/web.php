@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+
 
 
 /*
@@ -47,6 +45,8 @@ Route::resource('dashboard/category', 'dashboard\CategoryController');
 Route::post('dashboard/post/{post}/image','dashboard\PostController@image')->name('post.image');
 Route::resource('dashboard/user', 'dashboard\UserController');
 
+
+Route::get('/','web\WebController@index' )->name('index');
 
 Auth::routes();
 
