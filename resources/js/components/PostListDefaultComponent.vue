@@ -11,23 +11,43 @@
         </div>
         <modal-post :post="postSelected"></modal-post>
 
+        <v-pagination class="mt-3" v-modal="currentPage" :page-count="total" :classes="bootstrapPaginationClasses"
+                  :labels="paginationAnchorTexts"></v-pagination>
+
     </div>
 </template>
 
 <script>
+import vPagination from "vue-plain-pagination";
+
 export default {
-    props:["posts"],
-  created() {
-  },
+  props: ["posts"],
+  created() {},
   methods: {
     postClick: function(p) {
       this.postSelected = p;
-    },
+    }
   },
   data: function() {
     return {
       postSelected: "",
+      currentPage: 1,
+      total: 9,
+      bootstrapPaginationClasses: {
+        ul: "pagination",
+        li: "page-item",
+        liActive: "active",
+        liDisable: "disabled",
+        button: "page-link"
+      },
+      paginationAnchorTexts: {
+        first: "",
+        prev: "&laquo",
+        next: "&raquo",
+        last: ""
+      }
     };
-  }
+  },
+  components: { vPagination }
 };
 </script>
