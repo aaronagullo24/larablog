@@ -2009,10 +2009,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     postClick: function postClick(post) {
@@ -2023,22 +2019,27 @@ __webpack_require__.r(__webpack_exports__);
     return {
       postSelected: "",
       posts: [{
+        id: 1,
         title: "Titulo 102020",
         image: "1587497227.png",
         content: "Hola buenos dias"
       }, {
+        id: 2,
         title: "Titulo 2",
         image: "1587497227.png",
         content: "Hola buenos dias"
       }, {
+        id: 3,
         title: "Titulo 3",
         image: "1587497227.png",
         content: "Hola buenos dias"
       }, {
+        id: 4,
         title: "Titulo 4",
         image: "1587497227.png",
         content: "Hola buenos dias"
       }, {
+        id: 5,
         title: "Titulo 5",
         image: "1587497227.png",
         content: "Hola buenos dias"
@@ -37835,38 +37836,46 @@ var render = function() {
             attrs: { src: "/image/" + post.image }
           }),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v(" " + _vm._s(post.title))
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(_vm._s(post.content))
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                on: {
-                  click: function($event) {
-                    return _vm.postClick(post)
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(" " + _vm._s(post.title))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(post.content))
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.postClick(post)
+                    }
                   }
-                }
-              },
-              [_vm._v("Ver resumen")]
-            )
-          ])
+                },
+                [_vm._v("Ver resumen")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { to: "detail/" + post.id }
+                },
+                [_vm._v("ver")]
+              )
+            ],
+            1
+          )
         ])
       }),
       _vm._v(" "),
-      _c("modal-post", { attrs: { post: _vm.postSelected } }),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/foo" } }, [_vm._v("Go to Foo")]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/bar" } }, [_vm._v("Go to Bar")]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/" } }, [_vm._v("Go to List")])
+      _c("modal-post", { attrs: { post: _vm.postSelected } })
     ],
     2
   )
@@ -53104,9 +53113,11 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: [// { path: '/', component: PostList },
-  {
+  routes: [{
     path: '/',
+    component: _components_PostListComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }, {
+    path: '/detail/:id',
     component: _components_PostDetailComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }]
 }));

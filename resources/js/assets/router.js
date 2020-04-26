@@ -7,8 +7,8 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     routes: [
-       // { path: '/', component: PostList },
-        { path: '/', component: PostDetail },
+        { path: '/', component: PostList },
+        { path: '/detail/:id', component: PostDetail },
    
     ]
 });
