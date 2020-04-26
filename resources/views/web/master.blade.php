@@ -11,11 +11,12 @@
 </head>
 
 <body>
-  <div class="container" id="app">
+  @include('web.partials.nav-header-main')
+  <div class="container mb-3 mt-3" id="app">
     @yield('content')
   </div>
   <script src="{{asset('js/app.js')}}"></script>
-
+@include('web.partials.footer-main')
 </body>
 
 </html>
