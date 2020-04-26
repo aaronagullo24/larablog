@@ -10,5 +10,5 @@
     </div>
 </div>
 
-<list-posts></list-posts>
+<list-posts title="Titulo" :final_posts="posts"></list-posts>
 @endsection

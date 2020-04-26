@@ -49798,6 +49798,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 Vue.component('list-posts', {
+  props: ["title", "final_posts"],
   data: function data() {
     return {
       posts2: [{
@@ -49823,14 +49824,14 @@ Vue.component('list-posts', {
       }]
     };
   },
-  template: '<div><div class="card" v-for="post in posts2">  <div class="card-body"> <h5 class="card-title"> {{post.title}}</h5> <p class="card-text">{{post.content}}</p> <a href="#" class="btn btn-primary">Ver resumen</a> </div> </div></div>'
+  template: '<div><h1>{{title}}</h1><div class="card" v-for="post in final_posts">  <div class="card-body"> <h5 class="card-title"> {{post.title}}</h5> <p class="card-text">{{post.content}}</p> <a href="#" class="btn btn-primary">Ver resumen</a> </div> </div></div>'
 });
 var app = new Vue({
   el: '#app',
   data: {
     message: 'hola Vue',
     posts: [{
-      title: 'Titulo 1',
+      title: 'Titulo 100',
       image: '1587497227.png',
       content: 'Hola buenos dias'
     }, {
