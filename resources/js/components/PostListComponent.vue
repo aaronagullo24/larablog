@@ -25,50 +25,23 @@ export default {
     },
     getPost() {
       fetch("/api/post")
+        .then(response=> response.json())
+        .then(json=>this.posts = json.data.data);
+
+      /*fetch("/api/post")
         .then(function(response) {
           return response.json();
         })
         .then(function(json) {
           this.posts = json.data.data;
           //console.log(json.data.data[0].title);
-        });
+        })*/
     }
   },
   data: function() {
     return {
       postSelected: "",
-      posts: [
-        {
-          id: 1,
-          title: "Titulo 102020",
-          image: "1587497227.png",
-          content: "Hola buenos dias"
-        },
-        {
-          id: 2,
-          title: "Titulo 2",
-          image: "1587497227.png",
-          content: "Hola buenos dias"
-        },
-        {
-          id: 3,
-          title: "Titulo 3",
-          image: "1587497227.png",
-          content: "Hola buenos dias"
-        },
-        {
-          id: 4,
-          title: "Titulo 4",
-          image: "1587497227.png",
-          content: "Hola buenos dias"
-        },
-        {
-          id: 5,
-          title: "Titulo 5",
-          image: "1587497227.png",
-          content: "Hola buenos dias"
-        }
-      ]
+      posts: []
     };
   }
 };
