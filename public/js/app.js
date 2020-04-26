@@ -2010,9 +2010,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    this.getPost();
+  },
   methods: {
     postClick: function postClick(post) {
       this.postSelected = post;
+    },
+    getPost: function getPost() {
+      fetch("/api/post").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        this.posts = json.data.data; //console.log(json.data.data[0].title);
+      });
     }
   },
   data: function data() {
