@@ -5,5 +5,5 @@
 
 <list-posts title="Titulo" ></list-posts>
 
-<example-component></example-component>
+<modal-post></modal-post>
 @endsection
