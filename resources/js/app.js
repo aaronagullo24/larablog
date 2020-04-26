@@ -21,77 +21,18 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- Vue.component('list-posts',{
-     props:["title","final_posts"],
-     data:function(){
-         return{
-            posts2: [{
-                title: 'Titulo 1',
-                image: '1587497227.png',
-                content: 'Hola buenos dias'
-            },
-            {
-                title: 'Titulo 2',
-                image: '1587497227.png',
-                content: 'Hola buenos dias'
-            },
-            {
-                title: 'Titulo 3',
-                image: '1587497227.png',
-                content: 'Hola buenos dias'
-            },
-            {
-                title: 'Titulo 4',
-                image: '1587497227.png',
-                content: 'Hola buenos dias'
-            },
-            {
-                title: 'Titulo 5',
-                image: '1587497227.png',
-                content: 'Hola buenos dias'
-            },
-            ]
-         };
-     },
-     template:
-     '<div><h1>{{title}}</h1><div class="card" v-for="post in final_posts">  <div class="card-body"> <h5 class="card-title"> {{post.title}}</h5> <p class="card-text">{{post.content}}</p> <a href="#" class="btn btn-primary">Ver resumen</a> </div> </div></div>'
- })
+ Vue.component('list-posts',require("./components/PostListComponent.vue").default);
 
 const app = new Vue({
     el: '#app',
     data: {
         message: 'hola Vue',
-        posts: [{
-            title: 'Titulo 100',
-            image: '1587497227.png',
-            content: 'Hola buenos dias'
-        },
-        {
-            title: 'Titulo 2',
-            image: '1587497227.png',
-            content: 'Hola buenos dias'
-        },
-        {
-            title: 'Titulo 3',
-            image: '1587497227.png',
-            content: 'Hola buenos dias'
-        },
-        {
-            title: 'Titulo 4',
-            image: '1587497227.png',
-            content: 'Hola buenos dias'
-        },
-        {
-            title: 'Titulo 5',
-            image: '1587497227.png',
-            content: 'Hola buenos dias'
-        },
-        ]
     }
 });
