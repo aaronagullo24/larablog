@@ -48,6 +48,8 @@ Route::resource('dashboard/user', 'dashboard\UserController');
 
 Route::get('/','web\WebController@index' )->name('index');
 
+
+Route::get('/detail/{id}','web\WebController@detail');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
