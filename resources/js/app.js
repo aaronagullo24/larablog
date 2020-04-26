@@ -20,7 +20,9 @@ import router from './assets/router.js';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-
+Vue.component(
+    'post-list-default', require('./components/PostListDefaultComponent.vue').default
+);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,5 +35,5 @@ Vue.component('modal-post', require("./components/PostModalComponent.vue").defau
 
 const app = new Vue({
     el: '#app',
-    router,  
+    router,
 });
