@@ -9,20 +9,25 @@
                 </div>
         </div>
         <modal-post :post="postSelected"></modal-post>
+        
+        <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+    <router-link to="/">Go to List</router-link>
+    
+
     </div>
 </template>
 
 <script>
 export default {
-
-  methods:{
-    postClick:function(post){
+  methods: {
+    postClick: function(post) {
       this.postSelected = post;
     }
   },
   data: function() {
     return {
-      postSelected:"",
+      postSelected: "",
       posts: [
         {
           title: "Titulo 102020",

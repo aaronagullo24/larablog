@@ -21,10 +21,7 @@
   export default {
     props: ["post"],
     created() {
-      console.log("modal");
-     // setTimeout(function () {
-      //  $("#postModal").modal("show");
-      //}, 4000);
+      
     },watch:{
       post:function(newVal,oldVal){
         $("#postModal").modal("show");
