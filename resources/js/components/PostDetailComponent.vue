@@ -3,10 +3,11 @@
         <div v-if="post">
             <div class="card mt-3">
                 <div class="card-header">
-                    <img :src=" '/image/'+  post.image" class="card-img-top">
+                    <img :src=" '/image/'+  post.image.image" class="card-img-top">
                 </div>
                 <div class="card-body">
                     <h1 class="card-title"> {{post.title}}</h1>
+                    <router-link class="btn btn-primary" :to="{name:'detail',params:{id:post.id}}">{{post.category.title}}</router-link>
                     <p class="card-text">{{post.content}}</p>
 
                 </div>
@@ -21,25 +22,20 @@
 <script>
     export default {
         created() {
-            console.log("hola mundo "+ this.$route.params.id);
+           this.getPost();
         },
         methods: {
             getPost: function () {
-
+                fetch("/api/post/"+ this.$route.params.id)
+                    .then(response => response.json())
+                    .then(json => (this.post = json.data));
             }
         },
         data: function () {
             return {
                 postSelected: "",
-                post:
-                {
-                    title: "Titulo 102020",
-                    image: "1587497227.png",
-                    content: "Hola buenos dias"
-
-
-                }
-            }
+                post:""
+            };
         }
     };
 </script>

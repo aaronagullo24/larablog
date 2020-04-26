@@ -1963,21 +1963,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
-    console.log("hola mundo " + this.$route.params.id);
+    this.getPost();
   },
   methods: {
-    getPost: function getPost() {}
+    getPost: function getPost() {
+      var _this = this;
+
+      fetch("/api/post/" + this.$route.params.id).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this.post = json.data;
+      });
+    }
   },
   data: function data() {
     return {
       postSelected: "",
-      post: {
-        title: "Titulo 102020",
-        image: "1587497227.png",
-        content: "Hola buenos dias"
-      }
+      post: ""
     };
   }
 });
@@ -37781,19 +37786,35 @@ var render = function() {
             _c("div", { staticClass: "card-header" }, [
               _c("img", {
                 staticClass: "card-img-top",
-                attrs: { src: "/image/" + _vm.post.image }
+                attrs: { src: "/image/" + _vm.post.image.image }
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h1", { staticClass: "card-title" }, [
-                _vm._v(" " + _vm._s(_vm.post.title))
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(_vm.post.content))
-              ])
-            ])
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [
+                _c("h1", { staticClass: "card-title" }, [
+                  _vm._v(" " + _vm._s(_vm.post.title))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: {
+                      to: { name: "detail", params: { id: _vm.post.id } }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.post.category.title))]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(_vm.post.content))
+                ])
+              ],
+              1
+            )
           ])
         ])
       : _c("div", [_c("h1", [_vm._v("El post no existe")])])
