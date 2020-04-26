@@ -27,6 +27,41 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ Vue.component('list-posts',{
+     data:function(){
+         return{
+            posts2: [{
+                title: 'Titulo 1',
+                image: '1587497227.png',
+                content: 'Hola buenos dias'
+            },
+            {
+                title: 'Titulo 2',
+                image: '1587497227.png',
+                content: 'Hola buenos dias'
+            },
+            {
+                title: 'Titulo 3',
+                image: '1587497227.png',
+                content: 'Hola buenos dias'
+            },
+            {
+                title: 'Titulo 4',
+                image: '1587497227.png',
+                content: 'Hola buenos dias'
+            },
+            {
+                title: 'Titulo 5',
+                image: '1587497227.png',
+                content: 'Hola buenos dias'
+            },
+            ]
+         };
+     },
+     template:
+     '<div><div class="card" v-for="post in posts2">  <div class="card-body"> <h5 class="card-title"> {{post.title}}</h5> <p class="card-text">{{post.content}}</p> <a href="#" class="btn btn-primary">Ver resumen</a> </div> </div></div>'
+ })
+
 const app = new Vue({
     el: '#app',
     data: {
