@@ -1964,8 +1964,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  create: function create() {
-    console.log("hola mundo");
+  created: function created() {
+    console.log("hola mundo " + this.$route.params.id);
   },
   methods: {
     getPost: function getPost() {}
@@ -37865,7 +37865,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { to: "detail/" + post.id }
+                  attrs: { to: { name: "detail", params: { id: post.id } } }
                 },
                 [_vm._v("ver")]
               )
@@ -53115,10 +53115,12 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: [{
     path: '/',
-    component: _components_PostListComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    component: _components_PostListComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    name: "list"
   }, {
     path: '/detail/:id',
-    component: _components_PostDetailComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _components_PostDetailComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    name: "detail"
   }]
 }));
 

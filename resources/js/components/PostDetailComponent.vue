@@ -20,8 +20,8 @@
 
 <script>
     export default {
-        create() {
-            console.log("hola mundo");
+        created() {
+            console.log("hola mundo "+ this.$route.params.id);
         },
         methods: {
             getPost: function () {
