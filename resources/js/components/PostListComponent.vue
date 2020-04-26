@@ -8,14 +8,15 @@
                     <a href="#" class="btn btn-primary">Ver resumen</a>
                 </div>
         </div>
+        <modal-post :post="postSelected"></modal-post>
     </div>
 </template>
 
 <script>
 export default {
-  props: ["title", "final_posts"],
   data: function() {
     return {
+      postSelected:"",
       posts: [
         {
           title: "Titulo 102020",
