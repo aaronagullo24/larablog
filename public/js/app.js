@@ -1950,6 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     this.getPosts();
@@ -1961,19 +1962,26 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts() {
       var _this = this;
 
-      fetch("/api/post/" + this.$route.params.category_id + "/category").then(function (response) {
+      fetch("/api/post/" + this.$route.params.category_id + "/category?page=" + this.currentPage).then(function (response) {
         return response.json();
       }).then(function (json) {
         _this.posts = json.data.posts.data;
+        _this.total = json.data.posts.last_page;
         _this.category = json.data.category;
       });
+    },
+    getCurrentPage: function getCurrentPage(val) {
+      this.currentPage = val;
+      this.getPosts();
     }
   },
   data: function data() {
     return {
       postSelected: "",
       posts: [],
-      category: ""
+      total: 0,
+      category: "",
+      currentPage: 1
     };
   }
 });
@@ -37907,7 +37915,18 @@ var render = function() {
     [
       _c("h1", [_vm._v(_vm._s(_vm.category.title))]),
       _vm._v(" "),
-      _c("post-list-default", { attrs: { posts: _vm.posts } })
+      _vm.total > 0
+        ? _c("post-list-default", {
+            key: _vm.currentPage,
+            attrs: {
+              posts: _vm.posts,
+              pCurrentPage: _vm.currentPage,
+              total: _vm.total
+            },
+            on: { getCurrentPage: _vm.getCurrentPage }
+          })
+        : _vm._e(),
+      _vm._v(">\n")
     ],
     1
   )
