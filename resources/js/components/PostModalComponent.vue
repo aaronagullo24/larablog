@@ -12,10 +12,6 @@
         <div class="modal-body">
           {{post.content}}
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>
@@ -29,6 +25,10 @@
      // setTimeout(function () {
       //  $("#postModal").modal("show");
       //}, 4000);
+    },watch:{
+      post:function(newVal,oldVal){
+        $("#postModal").modal("show");
+      }
     }
   };
 </script>

@@ -2021,16 +2021,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["post"],
   created: function created() {
     console.log("modal"); // setTimeout(function () {
     //  $("#postModal").modal("show");
     //}, 4000);
+  },
+  watch: {
+    post: function post(newVal, oldVal) {
+      $("#postModal").modal("show");
+    }
   }
 });
 
@@ -37745,10 +37746,9 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c(
-              "a",
+              "button",
               {
                 staticClass: "btn btn-primary",
-                attrs: { href: "#" },
                 on: {
                   click: function($event) {
                     return _vm.postClick(post)
@@ -37818,9 +37818,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
             _vm._v("\n        " + _vm._s(_vm.post.content) + "\n      ")
-          ]),
-          _vm._v(" "),
-          _vm._m(1)
+          ])
         ])
       ])
     ]
@@ -37843,27 +37841,6 @@ var staticRenderFns = [
       },
       [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_vm._v("Save changes")]
-      )
-    ])
   }
 ]
 render._withStripped = true
