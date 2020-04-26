@@ -1,6 +1,6 @@
 <template lang="es">
     <div>
-      <post-list-default :posts="posts"></post-list-default>
+      <post-list-default v-if="total > 0" :posts="posts" :total="total"></post-list-default>
     </div>
 </template>
 
@@ -16,7 +16,10 @@ export default {
     getPost() {
       fetch("/api/post")
         .then(response=> response.json())
-        .then(json=>this.posts = json.data.data);
+        .then(json=>{
+          this.posts = json.data.data;
+          this.total = json.data.last_page
+        });
 
       /*fetch("/api/post")
         .then(function(response) {
@@ -31,7 +34,8 @@ export default {
   data: function() {
     return {
       postSelected: "",
-      posts: []
+      posts: [],
+      total:0
     };
   }
 };

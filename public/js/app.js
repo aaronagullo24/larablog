@@ -2064,7 +2064,8 @@ __webpack_require__.r(__webpack_exports__);
       fetch("/api/post").then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this.posts = json.data.data;
+        _this.posts = json.data.data;
+        _this.total = json.data.last_page;
       });
       /*fetch("/api/post")
         .then(function(response) {
@@ -2079,7 +2080,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       postSelected: "",
-      posts: []
+      posts: [],
+      total: 0
     };
   }
 });
@@ -2118,7 +2120,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["posts"],
+  props: ["posts", "total"],
   created: function created() {},
   methods: {
     postClick: function postClick(p) {
@@ -2129,7 +2131,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       postSelected: "",
       currentPage: 1,
-      total: 9,
       bootstrapPaginationClasses: {
         ul: "pagination",
         li: "page-item",
@@ -37981,7 +37982,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("post-list-default", { attrs: { posts: _vm.posts } })],
+    [
+      _vm.total > 0
+        ? _c("post-list-default", {
+            attrs: { posts: _vm.posts, total: _vm.total }
+          })
+        : _vm._e()
+    ],
     1
   )
 }

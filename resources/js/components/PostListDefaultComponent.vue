@@ -21,7 +21,7 @@
 import vPagination from "vue-plain-pagination";
 
 export default {
-  props: ["posts"],
+  props: ["posts","total"],
   created() {},
   methods: {
     postClick: function(p) {
@@ -32,7 +32,6 @@ export default {
     return {
       postSelected: "",
       currentPage: 1,
-      total: 9,
       bootstrapPaginationClasses: {
         ul: "pagination",
         li: "page-item",
