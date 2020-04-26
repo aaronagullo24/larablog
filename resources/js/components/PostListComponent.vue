@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <h5 class="card-title"> {{post.title}}</h5>
                     <p class="card-text">{{post.content}}</p>
-                    <a href="#" class="btn btn-primary">Ver resumen</a>
+                    <a href="#" class="btn btn-primary" v-on:click="postClick(post)">Ver resumen</a>
                 </div>
         </div>
         <modal-post :post="postSelected"></modal-post>
@@ -14,6 +14,12 @@
 
 <script>
 export default {
+
+  methods:{
+    postClick:function(post){
+      this.postSelected = post;
+    }
+  },
   data: function() {
     return {
       postSelected:"",

@@ -1958,6 +1958,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    postClick: function postClick(post) {
+      this.postSelected = post;
+    }
+  },
   data: function data() {
     return {
       postSelected: "",
@@ -2023,10 +2028,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["post"],
   created: function created() {
-    console.log("modal");
-    setTimeout(function () {
-      $("#postModal").modal("show");
-    }, 4000);
+    console.log("modal"); // setTimeout(function () {
+    //  $("#postModal").modal("show");
+    //}, 4000);
   }
 });
 
@@ -37740,9 +37744,19 @@ var render = function() {
               _vm._v(_vm._s(post.content))
             ]),
             _vm._v(" "),
-            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-              _vm._v("Ver resumen")
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.postClick(post)
+                  }
+                }
+              },
+              [_vm._v("Ver resumen")]
+            )
           ])
         ])
       }),
