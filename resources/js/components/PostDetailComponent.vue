@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-body">
                     <h1 class="card-title"> {{post.title}}</h1>
-                    <router-link class="btn btn-primary" :to="{name:'detail',params:{id:post.id}}">{{post.category.title}}</router-link>
+                    <router-link class="btn btn-success mb-3 ml-3" :to="{name:'post-category',params:{category_id:post.category.id}}">{{post.category.title}}</router-link>
                     <p class="card-text">{{post.content}}</p>
 
                 </div>

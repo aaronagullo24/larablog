@@ -50,6 +50,9 @@ Route::get('/','web\WebController@index' )->name('index');
 
 
 Route::get('/detail/{id}','web\WebController@detail');
+
+Route::get('/post-category/{id}','web\WebController@post_category');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
