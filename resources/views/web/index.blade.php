@@ -11,4 +11,6 @@
 </div>
 
 <list-posts title="Titulo" :final_posts="posts"></list-posts>
+
+<example-component></example-component>
 @endsection
