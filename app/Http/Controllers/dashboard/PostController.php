@@ -57,6 +57,7 @@ class PostController extends Controller
         //'url_clean'=>'required|min:5|max:500',
         //    'content' => 'required|min:5'
         //]);
+
         if ($request->url_clean == "") {
             $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->title), '-', true);
         } else {
@@ -69,8 +70,9 @@ class PostController extends Controller
         $validator = Validator::make($requestData, StorePostPost::myRules());
 
         if ($validator->fails()) {
-            echo "Errores";
-            return;
+            return redirect('dashboard/post/create')
+                ->withErrors($validator)
+                ->withInput();
         }
         //echo "Hola Store: " . $urlClean;
 
