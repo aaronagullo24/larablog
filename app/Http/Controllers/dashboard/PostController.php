@@ -4,11 +4,13 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Post;
 use App\Category;
-use App\Helpers\CustomUrl;
 use App\PostImage;
+use App\Helpers\CustomUrl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -60,13 +62,12 @@ class PostController extends Controller
         }else{
             $urlClean=CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->url_clean),'-',true);
         }
-        //echo "Hola Store: " . $urlClean;
-
         $requestData = $request->validated();
 
         $requestData['url_clean']=$urlClean;
 
-     
+        $validator=Validator::make($requestData);
+        //echo "Hola Store: " . $urlClean;
         Post::create($requestData);
         return back()->with('status', 'Post Creado con exito');
     }
