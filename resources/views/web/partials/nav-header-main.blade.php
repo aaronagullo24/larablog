@@ -9,8 +9,13 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-       <router-link to="/"  class="text-white">Home</router-link>
+        <router-link to="/" class="nav-link text-white">Home</router-link>
       </li>
+
+      <li class="nav-item">
+        <router-link to="/categories" class="nav-link text-white">Categorias</router-link>
+      </li>
+
 
     </ul>
 

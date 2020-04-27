@@ -48,6 +48,7 @@ Route::resource('dashboard/user', 'dashboard\UserController');
 
 Route::get('/','web\WebController@index' )->name('index');
 
+Route::get('/categories','web\WebController@index' )->name('index');
 
 Route::get('/detail/{id}','web\WebController@detail');
 
