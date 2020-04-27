@@ -45,7 +45,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostPost $request)
+    public function store(Request $request)
     {
         //dd($request->validated());
         //$request->validate([
@@ -53,10 +53,12 @@ class PostController extends Controller
         //'url_clean'=>'required|min:5|max:500',
         //    'content' => 'required|min:5'
         //]);
-if($request->url_clean==""){
-
-}
-        echo "Hola Store: " . $request->title;
+        if ($request->url_clean == "") {
+            $urlClean=$this->urlTitle($this->convertAccentedCharacters($request->title),'-',true);
+        }else{
+            $urlClean=$request->url_clean;
+        }
+        echo "Hola Store: " . $urlClean;
 
 
         //Post::create($request->validated());
