@@ -47,7 +47,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostPost $request)
     {
         //dd($request->validated());
         //$request->validate([
@@ -60,11 +60,15 @@ class PostController extends Controller
         }else{
             $urlClean=CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->url_clean),'-',true);
         }
-        echo "Hola Store: " . $urlClean;
+        //echo "Hola Store: " . $urlClean;
 
+        $requestData = $request->validated();
 
-        //Post::create($request->validated());
-        //return back()->with('status', 'Post Creado con exito');
+        $requestData['url_clean']=$urlClean;
+
+     
+        Post::create($requestData);
+        return back()->with('status', 'Post Creado con exito');
     }
 
     /**
