@@ -58,17 +58,24 @@ class PostController extends Controller
         //    'content' => 'required|min:5'
         //]);
         if ($request->url_clean == "") {
-            $urlClean=CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->title),'-',true);
-        }else{
-            $urlClean=CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->url_clean),'-',true);
+            $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->title), '-', true);
+        } else {
+            $urlClean = CustomUrl::urlTitle(CustomUrl::convertAccentedCharacters($request->url_clean), '-', true);
         }
         $requestData = $request->validated();
 
-        $requestData['url_clean']=$urlClean;
+        $requestData['url_clean'] = $urlClean;
 
-        $validator=Validator::make($requestData);
+        $validator = Validator::make($requestData, StorePostPost::myRules());
+
+        if ($validator->fails()) {
+            echo "Errores";
+            return;
+        }
         //echo "Hola Store: " . $urlClean;
+
         Post::create($requestData);
+
         return back()->with('status', 'Post Creado con exito');
     }
 
@@ -85,7 +92,7 @@ class PostController extends Controller
         return view('dashboard.post.show', ["post" => $post]);
     }
 
-   
+
     /**
      * Show the form for editing the specified resource.
      *
