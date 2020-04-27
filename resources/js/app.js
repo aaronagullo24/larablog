@@ -32,8 +32,9 @@ Vue.component(
 //Vue.component('list-posts', require("./components/PostListComponent.vue").default);
 
 Vue.component('modal-post', require("./components/PostModalComponent.vue").default);
-
+//import App from "./components/App.vue";
 const app = new Vue({
     el: '#app',
+    //render: h=>h(App),
     router,
 });

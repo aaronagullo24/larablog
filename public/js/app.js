@@ -53714,9 +53714,11 @@ Vue.component('post-list-default', __webpack_require__(/*! ./components/PostList
  */
 //Vue.component('list-posts', require("./components/PostListComponent.vue").default);
 
-Vue.component('modal-post', __webpack_require__(/*! ./components/PostModalComponent.vue */ "./resources/js/components/PostModalComponent.vue")["default"]);
+Vue.component('modal-post', __webpack_require__(/*! ./components/PostModalComponent.vue */ "./resources/js/components/PostModalComponent.vue")["default"]); //import App from "./components/App.vue";
+
 var app = new Vue({
   el: '#app',
+  //render: h=>h(App),
   router: _assets_router_js__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
@@ -53753,7 +53755,7 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
     name: "list"
   }, {
     path: '/categories',
-    component: _components_PostListComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    component: _components_CategoryListDefaultComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: "list-category"
   }, {
     path: '/detail/:id',

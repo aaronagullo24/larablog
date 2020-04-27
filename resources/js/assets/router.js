@@ -13,7 +13,7 @@ export default new VueRouter({
     mode:'history',
     routes: [
         { path: '/', component: PostList,name:"list" },
-        { path: '/categories', component: PostList,name:"list-category" },
+        { path: '/categories', component: CategoryListDefault,name:"list-category" },
         { path: '/detail/:id', component: PostDetail,name:"detail"},
         { path: '/post-category/:category_id', component: PostCategory,name:"post-category"},
         { path: '/contact', component: Contact,name:"contact" },
