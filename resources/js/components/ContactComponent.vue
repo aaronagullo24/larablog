@@ -2,7 +2,7 @@
     <div class="col-8 offset-2">
         <div class="card">
             <div class="card-header">
-                ssssssasa
+                <img src="/image/logo.png" alt="" class="logo_200 mx-auto d-block">
             </div>
             <div class="card-body">
                 <div class="input-group">
