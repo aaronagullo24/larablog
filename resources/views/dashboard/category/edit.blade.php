@@ -1,8 +1,8 @@
-@extends('dashboard.post.master')
+@extends('dashboard.master')
 
 @section('content')
 
-@include('dashboard.parciales.validation-error')
+@include('dashboard.partials.validation-error')
 <form action="{{route("category.update",$category->id)}}" method="POST">
 
     @method('PUT')
