@@ -1,10 +1,11 @@
-
-@extends('dashboard.post.master')
+@extends('dashboard.master')
 
 @section('content')
 
-@include('dashboard.parciales.validation-error')
-<form action="{{route("user.store")}}" method="POST">
-@include('dashboard.user._form',['pasw'=>false])
+@include('dashboard.partials.validation-error')
+
+<form action="{{ route("user.store") }}" method="POST">
+    @include('dashboard.user._form',['pasw' => true])
 </form>
+
 @endsection
