@@ -18,4 +18,8 @@ class WebController extends Controller
     public function post_category(){
         return view('web.index');
     }
+
+    public function contact(){
+        return view('web.index');
+    }
 }

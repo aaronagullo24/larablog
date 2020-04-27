@@ -1,5 +1,7 @@
 <template>
   <div>
+
+     <router-link class="btn btn-primary" :to="{name:'contact'}">Contacto</router-link>
     <post-list-default
       :key="currentPage"
       @getCurrentPage="getCurrentPage"
