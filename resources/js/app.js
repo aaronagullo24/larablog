@@ -5,7 +5,15 @@
  */
 
 require('./bootstrap');
+const ClassicEditor=require('@ckeditor/ckeditor5-build-classic');
 
+ClassicEditor.create(document.querySelector("#content"))
+    .then(editor => {})
+    .catch(error => {
+        console.error(error.stack);
+    });
+
+window.Vue=require('vue');
 import router from './assets/router.js';
 /**
  * The following block of code may be used to automatically register your

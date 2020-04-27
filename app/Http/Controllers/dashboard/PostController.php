@@ -14,7 +14,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['auth','rol.admin']);
+        $this->middleware(['auth', 'rol.admin']);
     }
     /**
      * Display a listing of the resource.
@@ -53,12 +53,14 @@ class PostController extends Controller
         //'url_clean'=>'required|min:5|max:500',
         //    'content' => 'required|min:5'
         //]);
+if($request->url_clean==""){
 
+}
         echo "Hola Store: " . $request->title;
 
 
-        Post::create($request->validated());
-        return back()->with('status', 'Post Creado con exito');
+        //Post::create($request->validated());
+        //return back()->with('status', 'Post Creado con exito');
     }
 
     /**
@@ -72,6 +74,40 @@ class PostController extends Controller
         // $post = Post::findOrFail($id);
 
         return view('dashboard.post.show', ["post" => $post]);
+    }
+
+    public static function convertAccentedCharacters($str)
+    {
+        return strtr(utf8_decode($str), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+    }
+
+    public static function urlTitle($str, $separator = '-', $lowercase = false)
+    {
+        if ($separator === 'dash') {
+            $separator = '-';
+        } elseif ($separator === 'underscore') {
+            $separator = '_';
+        }
+
+        $q_separator = preg_quote($separator, '#');
+
+        $trans = array(
+            '&.+?;' => '',
+            '[^\w\d _-]' => '',
+            '\s+' => $separator,
+            '(' . $q_separator . ')+' => $separator,
+        );
+
+        $str = strip_tags($str);
+        foreach ($trans as $key => $val) {
+            $str = preg_replace('#' . $key . '#iu', $val, $str);
+        }
+
+        if ($lowercase === true) {
+            $str = strtolower($str);
+        }
+
+        return trim(trim($str, $separator));
     }
 
     /**
