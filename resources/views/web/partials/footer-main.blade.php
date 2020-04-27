@@ -47,7 +47,8 @@
 
   <!-- Copyright -->
   <div class="bg-dark2 footer-copyright text-center py-3 text-white">© {{date('Y')}} Copyright:
-    <a href="/" class="text-white"> LaraBlog</a>
+    <router-link to="/" class="text-white"> LaraBlog</router-link>
+    <router-link  class="text-white" :to="{name:'contact'}"><u>Contacto</u></router-link>
   </div>
   <!-- Copyright -->
 

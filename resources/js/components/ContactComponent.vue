@@ -41,9 +41,7 @@
         created() { },
         methods: {
             saveContact: function () {
-
                 console.log(this.name);
-
                 console.log(this.surname);
                 console.log(this.email);
                 console.log(this.content);
