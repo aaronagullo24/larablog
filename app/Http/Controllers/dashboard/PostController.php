@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Post;
 use App\Category;
+use App\Helpers\CustomUrl;
 use App\PostImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,6 +36,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        CustomUrl::hola_mundo();
         $categories = Category::pluck('id', 'title');
         return view("dashboard.post.create", ['post' => new Post(), 'categories' => $categories]);
     }
