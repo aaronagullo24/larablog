@@ -42,8 +42,9 @@ class PostController extends Controller
     public function create()
     {
         //CustomUrl::hola_mundo();
+        $tags=Tag::pluck('id','title');
         $categories = Category::pluck('id', 'title');
-        return view("dashboard.post.create", ['post' => new Post(), 'categories' => $categories]);
+        return view("dashboard.post.create", ['post' => new Post(), 'categories' => $categories,'tags'=>$tags]);
     }
 
     /**
@@ -108,9 +109,10 @@ class PostController extends Controller
     {
         //dd($post->tags);
         $tag = Tag::find(1);
-        dd($tag->posts);
+        //dd($tag->posts);
+        $tags=Tag::pluck('id','title');
         $categories = Category::pluck('id', 'title');
-        return view('dashboard.post.edit', ["post" => $post, 'categories' => $categories]);
+        return view('dashboard.post.edit', ["post" => $post, 'categories' => $categories,'tags'=>$tags]);
     }
 
     /**
@@ -123,7 +125,7 @@ class PostController extends Controller
     public function update(UpdatePostPut $request, Post $post)
     {
         //echo "hola update";
-
+        dd($request->tags_id);
         $post->update($request->validated());
         return back()->with('status', 'Post actualizado con exito');
     }
