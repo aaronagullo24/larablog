@@ -73,6 +73,9 @@
                 <button data-toggle="modal" data-target="#showModal" data-id="{{ $postComment->id }}"
                     class="btn btn-primary">ver</button>
 
+                    <button data-id="{{ $postComment->id }}" class="btn btn-{{$postComment->approved == 1 ? "success" : "danger"}}">
+                        {{$postComment->approved == 1 ? "Aprobado" : "Rechazado"}}</button>
+
                 <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $postComment->id }}"
                     class="btn btn-danger">Eliminar</button>
 
