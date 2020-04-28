@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Tag;
 use App\Post;
 use App\Category;
 use App\PostImage;
@@ -105,6 +106,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        //dd($post->tags);
+        $tag = Tag::find(1);
+        dd($tag->posts);
         $categories = Category::pluck('id', 'title');
         return view('dashboard.post.edit', ["post" => $post, 'categories' => $categories]);
     }
