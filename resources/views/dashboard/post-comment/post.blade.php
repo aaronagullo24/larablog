@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="col-6 mb-3">
-<select id="filterPost" class="form-control">
-@foreach ($posts as $p)
-    <option value="{{$p->id}}">{{$p->title}}</option>
-@endforeach
-</select>
+    <select id="filterPost" class="form-control">
+        @foreach ($posts as $p)
+        <option value="{{$p->id}}" {{$post->id == $p->id ? 'selected' : ''}} >{{$p->title}}</option>
+        @endforeach
+    </select>
 </div>
 @if (count($postComments) > 0)
-    
+
 <table class="table">
     <thead>
         <tr>
@@ -101,29 +101,29 @@
 </div>
 
 <script>
-    window.onload = function() {
+    window.onload = function () {
         $('#deleteModal').on('show.bs.modal', function (event) {
-                
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var id = button.data('id') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
-        action = $('#formDelete').attr('data-action').slice(0,-1)
-        action += id
-        console.log(action)
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var id = button.data('id') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
-        $('#formDelete').attr('action',action)
+            action = $('#formDelete').attr('data-action').slice(0, -1)
+            action += id
+            console.log(action)
 
-        var modal = $(this)
-        modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
+            $('#formDelete').attr('action', action)
+
+            var modal = $(this)
+            modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
         });
     };
 </script>
-   
+
 @else
-  
-    <h1> NO TIENE COMENTARIO </h1>
+
+<h1> NO TIENE COMENTARIO </h1>
 
 @endif
 @endsection
