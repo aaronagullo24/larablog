@@ -53703,12 +53703,6 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_router_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/router.js */ "./resources/js/assets/router.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -53718,7 +53712,64 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var ClassicEditor = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 
- //import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+
+var MyUploadAdapter = __webpack_require__(/*! ./assets/ckeditor/MyUploadAdapter.js */ "./resources/js/assets/ckeditor/MyUploadAdapter.js");
+
+function MyCustomUploadAdapterPlugin(editor) {
+  editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    // Configure the URL to the upload script in your back-end here!
+    return new MyUploadAdapter(loader);
+  };
+}
+
+ClassicEditor.create(document.querySelector("#content"), {
+  extraPlugins: [MyCustomUploadAdapterPlugin]
+}).then(function (editor) {})["catch"](function (error) {
+  console.error(error.stack);
+});
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('post-list-default', __webpack_require__(/*! ./components/PostListDefaultComponent.vue */ "./resources/js/components/PostListDefaultComponent.vue")["default"]);
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+//Vue.component('list-posts', require("./components/PostListComponent.vue").default);
+
+Vue.component('modal-post', __webpack_require__(/*! ./components/PostModalComponent.vue */ "./resources/js/components/PostModalComponent.vue")["default"]); //import App from "./components/App.vue";
+
+var app = new Vue({
+  el: '#app',
+  //render: h=>h(App),
+  router: _assets_router_js__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/assets/ckeditor/MyUploadAdapter.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/assets/ckeditor/MyUploadAdapter.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var MyUploadAdapter = /*#__PURE__*/function () {
   function MyUploadAdapter(loader) {
@@ -53827,48 +53878,9 @@ var MyUploadAdapter = /*#__PURE__*/function () {
   }]);
 
   return MyUploadAdapter;
-}(); // ...
+}();
 
-
-function MyCustomUploadAdapterPlugin(editor) {
-  editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-    // Configure the URL to the upload script in your back-end here!
-    return new MyUploadAdapter(loader);
-  };
-}
-
-ClassicEditor.create(document.querySelector("#content"), {
-  extraPlugins: [MyCustomUploadAdapterPlugin]
-}).then(function (editor) {})["catch"](function (error) {
-  console.error(error.stack);
-});
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-Vue.component('post-list-default', __webpack_require__(/*! ./components/PostListDefaultComponent.vue */ "./resources/js/components/PostListDefaultComponent.vue")["default"]);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-//Vue.component('list-posts', require("./components/PostListComponent.vue").default);
-
-Vue.component('modal-post', __webpack_require__(/*! ./components/PostModalComponent.vue */ "./resources/js/components/PostModalComponent.vue")["default"]); //import App from "./components/App.vue";
-
-var app = new Vue({
-  el: '#app',
-  //render: h=>h(App),
-  router: _assets_router_js__WEBPACK_IMPORTED_MODULE_0__["default"]
-});
+module.exports = MyUploadAdapter;
 
 /***/ }),
 
