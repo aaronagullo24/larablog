@@ -149,8 +149,27 @@
 
     document.querySelectorAll(".approved").forEach(button=>button.addEventListener("click",function(){
         console.log("Aprobado: "+button.getAttribute("data-id"));
-    }))
     
+    
+    var id=button.getAttribute("data-id");
+
+    $.ajax({
+        method: "POST",
+        url: "{{ URL::to("/") }}/dashboard/post-comment/proccess/" + id,
+        data:{'_token':'{{csrf_token()}}'}
+    })
+        .done(function (aprroved) {
+           if(aprroved == 1){
+               $(button).removeClass('btn-danger');
+               $(button).addClass('btn-success');
+               $(button).text("Aprobado")
+           }else{
+            $(button).addClass('btn-danger');
+            $(button).removeClass('btn-success');
+            $(button).text("Rechazado")
+           }
+        });
+    }))
     
     
     window.onload = function () {
