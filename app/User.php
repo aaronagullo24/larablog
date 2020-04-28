@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Rol;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','surname', 'email', 'password','rol_id'
+        'name', 'surname', 'email', 'password', 'rol_id'
     ];
 
     /**
@@ -38,7 +39,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function rol(){
+    public function rol()
+    {
         return $this->belongsTo(Rol::class);
+    }
+
+    //public function getNameAttribute($value){
+    //  return strtoupper($value);
+    //}
+    public function setPasswordAttribute($value){
+        $this->attributes["password"]=Hash::make($value);
     }
 }

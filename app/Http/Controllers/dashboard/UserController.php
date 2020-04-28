@@ -49,7 +49,7 @@ class UserController extends Controller
             'rol_id'=>1,
             'surname'=>$request['surname'],
             'email'=>$request['email'],
-            'password'=>Hash::make($request['password']),
+            'password'=>$request['password'],
 
         ]);
         return back()->with('status', 'Usuario creado con exito');
