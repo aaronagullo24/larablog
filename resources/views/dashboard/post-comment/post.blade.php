@@ -152,35 +152,44 @@
         });
 
         $('#showModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var modal = $(this)
-            $.ajax({
-                method: "GET",
-                url: "{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id
-            })
-                .done(function (comment) {
-                    modal.find('.modal-title').text(comment.title)
-                    modal.find('.message').text(comment.message)
-                })
-        });
+             var button = $(event.relatedTarget)
+             var id = button.data('id')
+             var modal = $(this)
+           /*  $.ajax({
+                 method: "GET",
+                 url: "{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id
+             })
+                 .done(function (comment) {
+                     modal.find('.modal-title').text(comment.title)
+                     modal.find('.message').text(comment.message)
+                 })*/
+
+        fetch("{{ URL::to("/") }}/dashboard/post-comment/j-show/"+id)
+            .then(response => response.json())
+            .then(comment => {
+                modal.find('.modal-title').text(comment.title)
+                modal.find('.message').text(comment.message)
+            });
+
+
+    });
 
 
 
-        $('#deleteModal').on('show.bs.modal', function (event) {
+    $('#deleteModal').on('show.bs.modal', function (event) {
 
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
 
-            action = $('#formDelete').attr('data-action').slice(0, -1)
-            action += id
-            console.log(action)
+        action = $('#formDelete').attr('data-action').slice(0, -1)
+        action += id
+        console.log(action)
 
-            $('#formDelete').attr('action', action)
+        $('#formDelete').attr('action', action)
 
-            var modal = $(this)
-            modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
-        });
+        var modal = $(this)
+        modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
+    });
     }
 </script>
 @endsection
