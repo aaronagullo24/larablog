@@ -53,7 +53,7 @@ Route::resource('dashboard/post-comment', 'dashboard\PostCommentController')->on
     'index','show','destroy'
 ]);
 
-Route::get('post/post-comment/{post}/post','dashboard\PostCommentController@post')->name('post-comment.post');
+Route::get('dashboard/post-comment/{post}/post','dashboard\PostCommentController@post')->name('post-comment.post');
 
 Route::post('dashboard/post/content_image','dashboard\PostController@contentImage');
 
