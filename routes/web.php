@@ -45,6 +45,9 @@ Route::resource('dashboard/category', 'dashboard\CategoryController');
 Route::post('dashboard/post/{post}/image','dashboard\PostController@image')->name('post.image');
 Route::resource('dashboard/user', 'dashboard\UserController');
 
+Route::resource('dashboard/contact', 'dashboard\ContactController')->only([
+    'index','show','destroy'
+]);
 
 Route::post('dashboard/post/content_image','dashboard\PostController@contentImage');
 
