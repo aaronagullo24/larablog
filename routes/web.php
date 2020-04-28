@@ -49,6 +49,10 @@ Route::resource('dashboard/contact', 'dashboard\ContactController')->only([
     'index','show','destroy'
 ]);
 
+Route::resource('dashboard/post-comment', 'dashboard\PostCommentController')->only([
+    'index','show','destroy'
+]);
+
 Route::post('dashboard/post/content_image','dashboard\PostController@contentImage');
 
 Route::get('/','web\WebController@index' )->name('index');
