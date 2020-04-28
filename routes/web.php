@@ -46,6 +46,8 @@ Route::post('dashboard/post/{post}/image','dashboard\PostController@image')->nam
 Route::resource('dashboard/user', 'dashboard\UserController');
 
 
+Route::post('dashboard/post/content_image','dashboard\PostController@contentImage');
+
 Route::get('/','web\WebController@index' )->name('index');
 
 Route::get('/categories','web\WebController@index' )->name('index');

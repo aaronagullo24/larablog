@@ -139,6 +139,22 @@ class PostController extends Controller
         return back()->with('status', 'Imagen subida con exito');
     }
 
+    public function contentImage(Request $request, Post $post)
+    {
+        //echo "imagen";
+        $request->validate([
+            'image' => 'required|mimes:jpeg,bmp,png|max:10240'
+        ]);
+
+        $filename = time() . "." . $request->image->extension();
+        //echo $filename;
+        $request->image->move(public_path('image'), $filename);
+
+
+        PostImage::create(['image' => $filename, 'post_id' => $post->id]);
+        return back()->with('status', 'Imagen subida con exito');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
