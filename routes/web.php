@@ -55,6 +55,9 @@ Route::resource('dashboard/post-comment', 'dashboard\PostCommentController')->on
 
 Route::get('dashboard/post-comment/{post}/post','dashboard\PostCommentController@post')->name('post-comment.post');
 
+Route::get('dashboard/post-comment/j-show/{postComment}','dashboard\PostCommentController@jshow');
+
+
 Route::post('dashboard/post/content_image','dashboard\PostController@contentImage');
 
 Route::get('/','web\WebController@index' )->name('index');

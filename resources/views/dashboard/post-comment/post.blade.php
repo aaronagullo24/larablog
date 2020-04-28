@@ -135,16 +135,29 @@
     </div>
 </div>
 
+
+@else
+
+<h1> NO TIENE COMENTARIO </h1>
+
+@endif
+
 <script>
     window.onload = function () {
-        $('#showModal').on('show.bs.modal', function (event) {
+        $("#FilterForm").submit(function () {
+            var action = $(this).attr('action');
+            action = action.replace(/[0-9]/g, $("#filterPost").val());
+            console.log(action);
+            $(this).attr('action', action)
+        });
 
+        $('#showModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var id = button.data('id')
             var modal = $(this)
             $.ajax({
                 method: "GET",
-                url: "{{URL::to(" / ")}}/dashboard/post-comment/j-show/" + id,
+                url: "{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id
             })
                 .done(function (comment) {
                     modal.find('.modal-title').text(comment.title)
@@ -167,23 +180,6 @@
 
             var modal = $(this)
             modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
-        });
-    };
-</script>
-
-@else
-
-<h1> NO TIENE COMENTARIO </h1>
-
-@endif
-
-<script>
-    window.onload = function () {
-        $("#FilterForm").submit(function () {
-            var action = $(this).attr('action');
-            action = action.replace(/[0-9]/g, $("#filterPost").val());
-            console.log(action);
-            $(this).attr('action', action)
         });
     }
 </script>
