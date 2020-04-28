@@ -2,11 +2,21 @@
 
 @section('content')
 <div class="col-6 mb-3">
-    <select id="filterPost" class="form-control">
-        @foreach ($posts as $p)
-        <option value="{{$p->id}}" {{$post->id == $p->id ? 'selected' : ''}} >{{Str::limit($p->title,80)}}</option>
-        @endforeach
-    </select>
+    <form action="{{ route('post-comment.post',1)}}" id="FilterForm">
+        <div class="form-row">
+            <div class="col-10">
+            <select id="filterPost" class="form-control">
+                @foreach ($posts as $p)
+                <option value="{{$p->id}}" {{$post->id == $p->id ? 'selected' : ''}}>{{Str::limit($p->title,80)}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-2">
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+    </div>
+    </form>
 </div>
 @if (count($postComments) > 0)
 
@@ -126,4 +136,15 @@
 <h1> NO TIENE COMENTARIO </h1>
 
 @endif
+
+<script>
+    window.onload=function(){
+        $("#FilterForm").submit(function(){
+            var action=$(this).attr('action');
+            action=action.replace(/[0-9]/g,$("#filterPost").val());
+            console.log(action);
+            $(this).attr('action',action)
+        });
+    }
+</script>
 @endsection
