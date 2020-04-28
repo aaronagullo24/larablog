@@ -57,6 +57,7 @@ Route::get('dashboard/post-comment/{post}/post','dashboard\PostCommentController
 
 Route::get('dashboard/post-comment/j-show/{postComment}','dashboard\PostCommentController@jshow');
 
+Route::post('dashboard/post-comment/proccess/{postComment}','dashboard\PostCommentController@proccess');
 
 Route::post('dashboard/post/content_image','dashboard\PostController@contentImage');
 

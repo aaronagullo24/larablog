@@ -73,7 +73,7 @@
                 <button data-toggle="modal" data-target="#showModal" data-id="{{ $postComment->id }}"
                     class="btn btn-primary">ver</button>
 
-                    <button data-id="{{ $postComment->id }}" class="btn btn-{{$postComment->approved == 1 ? "success" : "danger"}}">
+                    <button data-id="{{ $postComment->id }}" class=" approved btn btn-{{$postComment->approved == 1 ? "success" : "danger"}}">
                         {{$postComment->approved == 1 ? "Aprobado" : "Rechazado"}}</button>
 
                 <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $postComment->id }}"
@@ -146,6 +146,13 @@
 @endif
 
 <script>
+
+    document.querySelectorAll(".approved").forEach(button=>button.addEventListener("click",function(){
+        console.log("Aprobado: "+button.getAttribute("data-id"));
+    }))
+    
+    
+    
     window.onload = function () {
         $("#FilterForm").submit(function () {
             var action = $(this).attr('action');
