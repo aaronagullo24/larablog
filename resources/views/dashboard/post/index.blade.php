@@ -57,6 +57,8 @@
                 <a href="{{ route('post.show',$post->id) }}" class="btn btn-primary">Ver</a>
                 <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary">Actualizar</a>
 
+                <a href="{{ route('post-comment.post',$post->id) }}" class="btn btn-primary">Comentarios</a>
+
                 <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $post->id }}"
                     class="btn btn-danger">Eliminar</button>
 
