@@ -4,7 +4,7 @@
 <div class="col-6 mb-3">
     <select id="filterPost" class="form-control">
         @foreach ($posts as $p)
-        <option value="{{$p->id}}" {{$post->id == $p->id ? 'selected' : ''}} >{{$p->title}}</option>
+        <option value="{{$p->id}}" {{$post->id == $p->id ? 'selected' : ''}} >{{Str::limit($p->title,80)}}</option>
         @endforeach
     </select>
 </div>
