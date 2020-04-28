@@ -7,6 +7,7 @@ use App\Category;
 use App\PostImage;
 use App\Helpers\CustomUrl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
 use App\Http\Requests\UpdatePostPut;
@@ -139,7 +140,7 @@ class PostController extends Controller
         return back()->with('status', 'Imagen subida con exito');
     }
 
-    public function contentImage(Request $request, Post $post)
+    public function contentImage(Request $request)
     {
         //echo "imagen";
         $request->validate([
@@ -150,9 +151,7 @@ class PostController extends Controller
         //echo $filename;
         $request->image->move(public_path('image'), $filename);
 
-
-        PostImage::create(['image' => $filename, 'post_id' => $post->id]);
-        return back()->with('status', 'Imagen subida con exito');
+        return response()->json(["default"=>URL::to('/').'/images/'.$fileName]);
     }
 
     /**
