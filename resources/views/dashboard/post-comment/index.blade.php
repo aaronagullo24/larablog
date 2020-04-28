@@ -2,6 +2,9 @@
 
 @section('content')
 
+@if (count($postComments) > 0)
+    
+
 
 <table class="table">
     <thead>
@@ -113,5 +116,10 @@
         });
     };
 </script>
+   
+@else
+  
+    <h1> NO TIENE COMENTARIO </h1>
 
+@endif
 @endsection
