@@ -53794,7 +53794,7 @@ var MyUploadAdapter = /*#__PURE__*/function () {
 
 
         resolve({
-          "default": response.url
+          "default": response["default"]
         });
       }); // Upload progress when it is supported. The file loader has the #uploadTotal and #uploaded
       // properties which are used e.g. to display the upload progress bar in the editor
@@ -53815,7 +53815,8 @@ var MyUploadAdapter = /*#__PURE__*/function () {
     value: function _sendRequest(file) {
       // Prepare the form data.
       var data = new FormData();
-      data.append('upload', file); // Important note: This is the right place to implement security mechanisms
+      data.append('image', file);
+      data.append("_token", $('#token').val()); // Important note: This is the right place to implement security mechanisms
       // like authentication and CSRF protection. For instance, you can use
       // XMLHttpRequest.setRequestHeader() to set the request headers containing
       // the CSRF token generated earlier by your application.

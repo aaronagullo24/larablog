@@ -142,16 +142,14 @@ class PostController extends Controller
 
     public function contentImage(Request $request)
     {
-        //echo "imagen";
         $request->validate([
             'image' => 'required|mimes:jpeg,bmp,png|max:10240'
         ]);
-
         $filename = time() . "." . $request->image->extension();
         //echo $filename;
-        $request->image->move(public_path('image'), $filename);
+        $request->image->move(public_path('images_post'), $filename);
 
-        return response()->json(["default"=>URL::to('/').'/images/'.$fileName]);
+        return response()->json(["default"=>URL::to('/').'/images_post/'.$filename]);
     }
 
     /**

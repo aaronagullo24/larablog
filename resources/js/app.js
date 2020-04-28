@@ -70,7 +70,7 @@ class MyUploadAdapter {
             // This URL will be used to display the image in the content. Learn more in the
             // UploadAdapter#upload documentation.
             resolve( {
-                default: response.url
+                default: response.default
             } );
         } );
 
@@ -92,7 +92,8 @@ class MyUploadAdapter {
         // Prepare the form data.
         const data = new FormData();
 
-        data.append( 'upload', file );
+        data.append( 'image', file );
+        data.append("_token",$('#token').val());
 
         // Important note: This is the right place to implement security mechanisms
         // like authentication and CSRF protection. For instance, you can use
