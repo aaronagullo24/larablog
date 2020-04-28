@@ -73,8 +73,9 @@
                 <button data-toggle="modal" data-target="#showModal" data-id="{{ $postComment->id }}"
                     class="btn btn-primary">ver</button>
 
-                    <button data-id="{{ $postComment->id }}" class=" approved btn btn-{{$postComment->approved == 1 ? "success" : "danger"}}">
-                        {{$postComment->approved == 1 ? "Aprobado" : "Rechazado"}}</button>
+                <button data-id="{{ $postComment->id }}"
+                    class=" approved btn btn-{{$postComment->approved == 1 ? "success" : "danger"}}">
+                    {{$postComment->approved == 1 ? "Aprobado" : "Rechazado"}}</button>
 
                 <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $postComment->id }}"
                     class="btn btn-danger">Eliminar</button>
@@ -147,31 +148,50 @@
 
 <script>
 
-    document.querySelectorAll(".approved").forEach(button=>button.addEventListener("click",function(){
-        console.log("Aprobado: "+button.getAttribute("data-id"));
-    
-    
-    var id=button.getAttribute("data-id");
+    document.querySelectorAll(".approved").forEach(button => button.addEventListener("click", function () {
+        console.log("Aprobado: " + button.getAttribute("data-id"));
 
-    $.ajax({
+        var id = button.getAttribute("data-id");
+        var formData = new FormData();
+        formData.append("_token", '{{ csrf_token() }}');
+
+    fetch("{{ URL::to("/") }}/dashboard/post-comment/proccess/" +id,{
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(aprroved => {
+            if (aprroved == 1) {
+                button.classList.remove('btn-danger')
+                button.classList.add('btn-success')
+                button.innerHTML="Aprobado";
+            } else {
+                button.classList.remove('btn-success')
+                button.classList.add('btn-danger')
+                button.innerHTML="Rechazado";
+            }
+        });
+
+
+    /*$.ajax({
         method: "POST",
-        url: "{{ URL::to("/") }}/dashboard/post-comment/proccess/" + id,
-        data:{'_token':'{{csrf_token()}}'}
+        url: "{{ URL::to(" / ") }}/dashboard/post-comment/proccess/" + id,
+        data: { '_token': '{{csrf_token()}}' }
     })
         .done(function (aprroved) {
-           if(aprroved == 1){
-               $(button).removeClass('btn-danger');
-               $(button).addClass('btn-success');
-               $(button).text("Aprobado")
-           }else{
-            $(button).addClass('btn-danger');
-            $(button).removeClass('btn-success');
-            $(button).text("Rechazado")
-           }
-        });
+            if (aprroved == 1) {
+                $(button).removeClass('btn-danger');
+                $(button).addClass('btn-success');
+                $(button).text("Aprobado")
+            } else {
+                $(button).addClass('btn-danger');
+                $(button).removeClass('btn-success');
+                $(button).text("Rechazado")
+            }
+        });*/
     }))
-    
-    
+
+
     window.onload = function () {
         $("#FilterForm").submit(function () {
             var action = $(this).attr('action');
@@ -181,44 +201,44 @@
         });
 
         $('#showModal').on('show.bs.modal', function (event) {
-             var button = $(event.relatedTarget)
-             var id = button.data('id')
-             var modal = $(this)
-           /*  $.ajax({
-                 method: "GET",
-                 url: "{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id
-             })
-                 .done(function (comment) {
-                     modal.find('.modal-title').text(comment.title)
-                     modal.find('.message').text(comment.message)
-                 })*/
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var modal = $(this)
+            /*  $.ajax({
+                  method: "GET",
+                  url: "{{ URL::to("/") }}/dashboard/post-comment/j-show/" + id
+              })
+                  .done(function (comment) {
+                      modal.find('.modal-title').text(comment.title)
+                      modal.find('.message').text(comment.message)
+                  })*/
 
-        fetch("{{ URL::to("/") }}/dashboard/post-comment/j-show/"+id)
-            .then(response => response.json())
-            .then(comment => {
-                modal.find('.modal-title').text(comment.title)
-                modal.find('.message').text(comment.message)
-            });
-
-
-    });
+            fetch("{{ URL::to(" / ") }}/dashboard/post-comment/j-show/" + id)
+                .then(response => response.json())
+                .then(comment => {
+                    modal.find('.modal-title').text(comment.title)
+                    modal.find('.message').text(comment.message)
+                });
 
 
+        });
 
-    $('#deleteModal').on('show.bs.modal', function (event) {
 
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
 
-        action = $('#formDelete').attr('data-action').slice(0, -1)
-        action += id
-        console.log(action)
+        $('#deleteModal').on('show.bs.modal', function (event) {
 
-        $('#formDelete').attr('action', action)
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
 
-        var modal = $(this)
-        modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
-    });
+            action = $('#formDelete').attr('data-action').slice(0, -1)
+            action += id
+            console.log(action)
+
+            $('#formDelete').attr('action', action)
+
+            var modal = $(this)
+            modal.find('.modal-title').text('Vas a borrar el POST: ' + id)
+        });
     }
 </script>
 @endsection
