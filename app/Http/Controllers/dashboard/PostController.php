@@ -9,6 +9,7 @@ use App\PostImage;
 use App\Helpers\CustomUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
@@ -30,6 +31,35 @@ class PostController extends Controller
      */
     public function index()
     {
+        /*
+        DB::transaction(function () {
+            DB::table('contacts')
+            ->where(["id"=>1])
+            ->delete();
+
+            $contacto = DB::select('select * from contacts where id = ?', [5]);
+            dd($contacto);
+
+            DB::table('contacts')
+            ->where(["id"=>10])
+            ->update(['name' => "pepito"]);
+        });
+        */
+
+        /*
+
+        DB::beginTransaction();
+
+        DB::table('contacts')
+            ->where(["id" => 1])
+            ->delete();
+
+        $contacto = DB::select('select * from contacts where id = ?', [5]);
+        dd($contacto);
+        DB::rollback();
+        
+        */
+
         /*
         $personas = [
             ["nombre" => "aaron", "edad" => 50],
