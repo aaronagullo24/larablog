@@ -8,6 +8,7 @@ use App\Category;
 use App\PostImage;
 use App\Helpers\CustomUrl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
@@ -29,8 +30,21 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(15);
 
+        $personas = [
+            ["nombre" => "aaron", "edad" => 50],
+            ["nombre" => "diego", "edad" => 10],
+            ["nombre" => "manolo", "edad" => 40]
+        ];
+
+        $collection1 = collect($personas);
+        $collection2=new Collection($personas);
+        $collection3= Collection::make($personas);
+        dd($collection2->filter(function($value,$key){
+            return $value['edad'] > 17;
+        })->sum('edad'));
+
+        $posts = Post::orderBy('created_at', 'desc')->paginate(15);
         return view('dashboard.post.index', ['posts' => $posts]);
     }
 
@@ -42,10 +56,10 @@ class PostController extends Controller
     public function create()
     {
         //CustomUrl::hola_mundo();
-        $tags=Tag::pluck('id','title');
+        $tags = Tag::pluck('id', 'title');
         $categories = Category::pluck('id', 'title');
         $post = new Post();
-        return view("dashboard.post.create",compact('post','categories','tags'));
+        return view("dashboard.post.create", compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -111,11 +125,10 @@ class PostController extends Controller
         //dd($post->tags);
         $tag = Tag::find(1);
         //dd($tag->posts);
-        $tags=Tag::pluck('id','title');
+        $tags = Tag::pluck('id', 'title');
         $categories = Category::pluck('id', 'title');
-        
-        return view('dashboard.post.edit', compact('post','categories','tags'));
-       
+
+        return view('dashboard.post.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -161,7 +174,7 @@ class PostController extends Controller
         //echo $filename;
         $request->image->move(public_path('images_post'), $filename);
 
-        return response()->json(["default"=>URL::to('/').'/images_post/'.$filename]);
+        return response()->json(["default" => URL::to('/') . '/images_post/' . $filename]);
     }
 
     /**
