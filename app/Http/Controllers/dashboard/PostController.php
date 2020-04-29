@@ -30,7 +30,7 @@ class PostController extends Controller
      */
     public function index()
     {
-
+        /*
         $personas = [
             ["nombre" => "aaron", "edad" => 50],
             ["nombre" => "diego", "edad" => 10],
@@ -43,6 +43,13 @@ class PostController extends Controller
         dd($collection2->filter(function($value,$key){
             return $value['edad'] > 17;
         })->sum('edad'));
+        */
+        /*
+        $personas = ["usuarios 1", "usuario 2", "usuario 3", "usuario 4", "usuario 4"];
+
+        $collection1 = collect($personas);
+        dd((bool) $collection1->intersect(['usuario 4'])->count());
+        */
 
         $posts = Post::orderBy('created_at', 'desc')->paginate(15);
         return view('dashboard.post.index', ['posts' => $posts]);
