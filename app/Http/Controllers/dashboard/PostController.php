@@ -44,7 +44,8 @@ class PostController extends Controller
         //CustomUrl::hola_mundo();
         $tags=Tag::pluck('id','title');
         $categories = Category::pluck('id', 'title');
-        return view("dashboard.post.create", ['post' => new Post(), 'categories' => $categories,'tags'=>$tags]);
+        $post = new Post();
+        return view("dashboard.post.create",compact('post','categories','tags'));
     }
 
     /**
@@ -112,7 +113,9 @@ class PostController extends Controller
         //dd($tag->posts);
         $tags=Tag::pluck('id','title');
         $categories = Category::pluck('id', 'title');
-        return view('dashboard.post.edit', ["post" => $post, 'categories' => $categories,'tags'=>$tags]);
+        
+        return view('dashboard.post.edit', compact('post','categories','tags'));
+       
     }
 
     /**
