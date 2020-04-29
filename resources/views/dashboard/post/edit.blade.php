@@ -21,9 +21,13 @@
             <input type="submit" class="btn btn-primary" value="Subir">
         </div>
     </div>
-
-
-
 </form>
 
+<div class="row mt-3">
+@foreach ($post->images as $image)
+    <div class="col-3">
+        <img class="w-100" src="{{$image->image}}">
+    </div> 
+@endforeach
+</div>
 @endsection
