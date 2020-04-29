@@ -219,6 +219,9 @@ class PostController extends Controller
         return response()->json(["default" => URL::to('/') . '/images_post/' . $filename]);
     }
 
+    public function imageDownload(PostImage $image){
+        return Storage::disk('local')->download($image->image);
+    }
     /**
      * Remove the specified resource from storage.
      *

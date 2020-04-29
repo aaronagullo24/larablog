@@ -45,6 +45,8 @@ Route::resource('dashboard/category', 'dashboard\CategoryController');
 Route::post('dashboard/post/{post}/image','dashboard\PostController@image')->name('post.image');
 Route::resource('dashboard/user', 'dashboard\UserController');
 
+Route::get('dashboard/post/image-download/{image}','dashboard\PostController@imageDownload')->name('post.image-download');
+
 Route::resource('dashboard/contact', 'dashboard\ContactController')->only([
     'index','show','destroy'
 ]);

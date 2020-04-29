@@ -15,7 +15,7 @@ class PostImage extends Model
         return $this->belongsTo(Post::class);
     }
 
-    public function getImageAttribute($value){
-        return Storage::url($value);
+    public function getImageUrl(){
+        return Storage::url($this->image);
     }
 }
