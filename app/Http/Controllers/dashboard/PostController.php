@@ -31,7 +31,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $this->sendEmail();
@@ -91,7 +91,12 @@ class PostController extends Controller
         dd((bool) $collection1->intersect(['usuario 4'])->count());
         */
 
-        $posts = Post::with('category')->orderBy('created_at', 'desc')->paginate(15);
+        $posts = Post::with('category')->orderBy('created_at', request('created_at', 'DESC'));
+        
+        if($request->has('search')){
+            $posts = $posts -> where('title', 'like', '%'.request('search').'%');
+        }  
+        $posts = $posts ->paginate(15);
         return view('dashboard.post.index', ['posts' => $posts]);
     }
 
@@ -256,7 +261,7 @@ class PostController extends Controller
         Mail::send('emails.email', $data, function ($message) {
             $message->to('prueba@gmail.com', 'Aaron')->subject("Gracias por escribirnos");
         });
-        if (Mail::fail()) {
+        if (Mail::failures()) {
             return "Mensaje no enviado";
         } else {
             return "Mensaje enviado";

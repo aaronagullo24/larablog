@@ -68,7 +68,12 @@
     </tbody>
 </table>
 
-{{ $posts->links() }}
+{{ $posts->appends(
+    [
+        'created_at'=>request('created_at'),
+        'search'=>request('serch'),
+        ])
+    ->links() }}
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
