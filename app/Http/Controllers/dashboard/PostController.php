@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
 use App\Http\Requests\UpdatePostPut;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -31,6 +32,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        //Storage::get("1587496534.png");
+
         
         /*
         DB::transaction(function () {
