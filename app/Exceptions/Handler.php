@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Throwable;
 use App\Traits\ApiResponse;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -57,7 +58,9 @@ class Handler extends ExceptionHandler
     {
         //dd($exception);
 
-        if(env('APP_ENV')=='local'){
+       //dd(Str::contains($request->path(),'api/'));
+
+        if(env('APP_ENV')=='local' || !Str::contains($request->path(),'api/')){
             return parent::render($request, $exception);
         }
 
