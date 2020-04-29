@@ -34,7 +34,7 @@ class PostController extends Controller
     {
         //Storage::get("1587496534.png");
 
-        
+
         /*
         DB::transaction(function () {
             DB::table('contacts')
@@ -199,10 +199,11 @@ class PostController extends Controller
 
         $filename = time() . "." . $request->image->extension();
         //echo $filename;
-        $request->image->move(public_path('image'), $filename);
+        // $request->image->move(public_path('image'), $filename);
 
+        $path = $request->image->store('public/images');
 
-        PostImage::create(['image' => $filename, 'post_id' => $post->id]);
+        PostImage::create(['image' => $path, 'post_id' => $post->id]);
         return back()->with('status', 'Imagen subida con exito');
     }
 

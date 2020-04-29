@@ -38335,7 +38335,7 @@ var render = function() {
             _c("div", { staticClass: "card-header" }, [
               _c("img", {
                 staticClass: "card-img-top",
-                attrs: { src: "/image/" + _vm.post.image.image }
+                attrs: { src: _vm.post.image.image }
               })
             ]),
             _vm._v(" "),
@@ -38447,7 +38447,7 @@ var render = function() {
         return _c("div", { key: post.title, staticClass: "card mt-3" }, [
           _c("img", {
             staticClass: "card-img-top",
-            attrs: { src: "/image/" + post.image }
+            attrs: { src: post.image }
           }),
           _vm._v(" "),
           _c(

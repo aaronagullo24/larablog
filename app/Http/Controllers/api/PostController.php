@@ -19,7 +19,11 @@ class PostController extends ApiResponseController
     public function index()
     {
         //echo "Hola mundo api";
-        $post = Post::join('post_images', 'post_images.post_id', '=', 'posts.id')->join('categories', 'categories.id', '=', 'posts.category_id')->select('posts.*', 'categories.title as category', 'post_images.image')->orderBy('posts.created_at', 'desc')->paginate(10);
+        $post = Post::join('post_images', 'post_images.post_id', '=', 'posts.id')
+            ->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->select('posts.*', 'categories.title as category', 'post_images.image')
+            ->orderBy('posts.created_at', 'desc')
+            ->paginate(10);
         return $this->successResponse($post);
     }
 
@@ -33,6 +37,7 @@ class PostController extends ApiResponseController
     public function show(Post $Post)
     {
         $Post->image;
+        $Post->images;
         $Post->category;
         return $this->successResponse($Post);
     }
