@@ -6,6 +6,15 @@
     Crear
 </a>
 
+<form action="{{route('post.index')}}" class="form-inline mb-2">
+    <select name="created_at" class="form-control">
+        <option value="DESC">Descendente</option>
+        <option {{ request('created_at')== "ASC" ? "selected" : ""}} value="ASC">Ascendente</option>
+    </select>
+    <input type="text" value="{{request('search')}}" name="search" placeholder="Buscar..." class="form-control ml-1">
+    <button type="submit" class="btn btn-success ml-2">Enviar</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
