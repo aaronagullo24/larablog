@@ -47,6 +47,8 @@ Route::resource('dashboard/user', 'dashboard\UserController');
 
 Route::get('dashboard/post/image-download/{image}','dashboard\PostController@imageDownload')->name('post.image-download');
 
+Route::delete('dashboard/post/image-delete/{image}','dashboard\PostController@imageDelete')->name('post.image-delete');
+
 Route::resource('dashboard/contact', 'dashboard\ContactController')->only([
     'index','show','destroy'
 ]);

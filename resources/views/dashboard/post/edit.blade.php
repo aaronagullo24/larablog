@@ -27,7 +27,13 @@
 @foreach ($post->images as $image)
     <div class="col-3">
         <img class="w-100" src="{{$image->getImageUrl()}}">
-        <a href="{{route("post.image-download",$image->id)}}" class="btn btn-success btn-sm mt-1">Descargar</a>
+        <a href="{{route("post.image-download",$image->id)}}" class="float-left btn btn-success btn-sm mt-1">Descargar</a>
+
+        <form action="{{route("post.image-delete",$image->id)}}" method="POST">
+            @method("DELETE")
+            @csrf
+            <button type="submit" class="float-right btn btn-danger btn-sm mt-1">Borrar</button>
+        </form>
     </div> 
 @endforeach
 </div>

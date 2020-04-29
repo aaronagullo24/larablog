@@ -222,6 +222,12 @@ class PostController extends Controller
     public function imageDownload(PostImage $image){
         return Storage::disk('local')->download($image->image);
     }
+
+    public function imageDelete(PostImage $image){
+        $image->delete();
+        Storage::disk('local')->delete($image->image);
+        return back()->with('status', 'Imagen eliminado con exito');
+    }
     /**
      * Remove the specified resource from storage.
      *
