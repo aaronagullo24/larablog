@@ -31,12 +31,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        /*
-        DB::listen(function($query){
-            echo "<code>".$query->sql."</code>";
-            echo "<code>".$query->time."</code>";
-        });
-        */
+        
         /*
         DB::transaction(function () {
             DB::table('contacts')
@@ -87,7 +82,7 @@ class PostController extends Controller
         dd((bool) $collection1->intersect(['usuario 4'])->count());
         */
 
-        $posts = Post::orderBy('created_at', 'desc')->paginate(15);
+        $posts = Post::with('category')->orderBy('created_at', 'desc')->paginate(15);
         return view('dashboard.post.index', ['posts' => $posts]);
     }
 

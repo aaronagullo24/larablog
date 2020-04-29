@@ -25,7 +25,7 @@ class UserController extends Controller
 
         User::find(2)->tags()->sync([1,2,3,4]);
 
-        $users = User::orderBy('created_at', 'desc')->paginate(15);
+        $users = User::with('rol')->orderBy('created_at', 'desc')->paginate(15);
         return view('dashboard.user.index', ['users' => $users]);
     }
 
