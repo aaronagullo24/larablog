@@ -48,12 +48,18 @@ class User extends Authenticatable
     //public function getNameAttribute($value){
     //  return strtoupper($value);
     //}
-    public function setPasswordAttribute($value){
-        $this->attributes["password"]=Hash::make($value);
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes["password"] = Hash::make($value);
     }
 
     public function tags()
     {
-        return $this->morphToMany(Tag::class,'taggable');
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function isAdmin()
+    {
+        return $this->rol->key == "admin";
     }
 }
