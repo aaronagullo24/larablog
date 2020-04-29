@@ -35,7 +35,7 @@
     <label for="category_id">Tags</label>
     <select multiple class="form-control" name="tags_id[]" id="tags_id">
         @foreach ($tags as $title => $id)
-        <option value="{{ $id }}">{{ $title }}</option>
+        <option {{in_array($id,old('tags_id') ?: []) ? "selected" : ""}} value="{{ $id }}">{{ $title }}</option>
         @endforeach
     </select>
 </div>
