@@ -125,7 +125,10 @@ class PostController extends Controller
     public function update(UpdatePostPut $request, Post $post)
     {
         //echo "hola update";
-        dd($request->tags_id);
+        //dd($request->tags_id);
+
+        $post->tags()->attach(1);
+        $post->tags()->detach(1);
         $post->update($request->validated());
         return back()->with('status', 'Post actualizado con exito');
     }
