@@ -32,6 +32,12 @@ class PostController extends Controller
     public function index()
     {
         /*
+        DB::listen(function($query){
+            echo "<code>".$query->sql."</code>";
+            echo "<code>".$query->time."</code>";
+        });
+        */
+        /*
         DB::transaction(function () {
             DB::table('contacts')
             ->where(["id"=>1])
