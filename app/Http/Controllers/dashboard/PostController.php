@@ -80,8 +80,8 @@ class PostController extends Controller
         }
         //echo "Hola Store: " . $urlClean;
 
-        Post::create($requestData);
-
+        $post = Post::create($requestData);
+        $post->tags()->sync($request->tags_id);
         return back()->with('status', 'Post Creado con exito');
     }
 
@@ -127,8 +127,8 @@ class PostController extends Controller
         //echo "hola update";
         //dd($request->tags_id);
 
-        $post->tags()->attach(1);
-        $post->tags()->detach(1);
+        //$post->tags()->attach(1);
+        $post->tags()->sync($request->tags_id);
         $post->update($request->validated());
         return back()->with('status', 'Post actualizado con exito');
     }
