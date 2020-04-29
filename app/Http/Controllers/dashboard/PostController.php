@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
 use App\Http\Requests\UpdatePostPut;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,6 +33,11 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        $this->sendEmail();
+
+
+
         //Storage::get("1587496534.png");
 
 
@@ -219,11 +225,13 @@ class PostController extends Controller
         return response()->json(["default" => URL::to('/') . '/images_post/' . $filename]);
     }
 
-    public function imageDownload(PostImage $image){
+    public function imageDownload(PostImage $image)
+    {
         return Storage::disk('local')->download($image->image);
     }
 
-    public function imageDelete(PostImage $image){
+    public function imageDelete(PostImage $image)
+    {
         $image->delete();
         Storage::disk('local')->delete($image->image);
         return back()->with('status', 'Imagen eliminado con exito');
@@ -240,5 +248,18 @@ class PostController extends Controller
 
         $post->delete();
         return back()->with('status', 'Post eliminado con exito');
+    }
+
+    private function sendEmail()
+    {
+        $data['title'] = "Datos de prueba email";
+        Mail::send('emails.email', $data, function ($message) {
+            $message->to('prueba@gmail.com', 'Aaron')->subject("Gracias por escribirnos");
+        });
+        if (Mail::fail()) {
+            return "Mensaje no enviado";
+        } else {
+            return "Mensaje enviado";
+        }
     }
 }
