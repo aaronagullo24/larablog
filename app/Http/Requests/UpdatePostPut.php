@@ -7,9 +7,15 @@ use Illuminate\Foundation\Http\FormRequest;
 class UpdatePostPut extends FormRequest
 {
 
-    public function messages(){
+    /*public function messages(){
         return [
             'title.required' => __("messages.titlepost")
+        ];
+    }*/
+
+    public function attributes(){
+        return [
+            "title"=> "Titulo de mi post"
         ];
     }
     
