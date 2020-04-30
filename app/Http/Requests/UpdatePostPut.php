@@ -6,6 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePostPut extends FormRequest
 {
+
+    public function messages(){
+        return [
+            'title.required' => "El titulo es requerido para todo"
+        ];
+    }
     
     /**
      * Determine if the user is authorized to make this request.
