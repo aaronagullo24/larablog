@@ -6,6 +6,10 @@
     Crear
 </a>
 
+<i class="fa fa-4x fa-user"></i>
+
+
+
 <form action="{{route('post.index')}}" class="form-inline mb-2">
     <select name="created_at" class="form-control">
         <option value="DESC">Descendente</option>

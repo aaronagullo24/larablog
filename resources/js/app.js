@@ -8,6 +8,7 @@ require('./bootstrap');
 const ClassicEditor=require('@ckeditor/ckeditor5-build-classic');
 import router from './assets/router.js';
 
+
 var MyUploadAdapter = require("./assets/ckeditor/MyUploadAdapter.js");
 
 
