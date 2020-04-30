@@ -3,11 +3,13 @@
 @section('content')
 
 <a class="btn btn-success mt-3 mb-3" href="{{ route('post.create') }}">
-    Crear
+    <i class="fa fa-plus"></i>Crear
 </a>
 
-<i class="fa fa-4x fa-user"></i>
 
+<a class="btn btn-success mt-3 mb-3" href="">
+    <i class="fa fa-file-excel"></i>Exportar
+</a>
 
 
 <form action="{{route('post.index')}}" class="form-inline mb-2">
@@ -16,7 +18,7 @@
         <option {{ request('created_at')== "ASC" ? "selected" : ""}} value="ASC">Ascendente</option>
     </select>
     <input type="text" value="{{request('search')}}" name="search" placeholder="Buscar..." class="form-control ml-1">
-    <button type="submit" class="btn btn-success ml-2">Enviar</button>
+    <button type="submit" class="btn btn-success ml-2"> <i class="fa fa-search"></i></button>
 </form>
 
 <table class="table">
@@ -67,13 +69,13 @@
                 {{ $post->updated_at->format('d-m-Y') }}
             </td>
             <td>
-                <a href="{{ route('post.show',$post->id) }}" class="btn btn-primary">Ver</a>
-                <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary">Actualizar</a>
+                <a href="{{ route('post.show',$post->id) }}" class="btn btn-primary"> <i class="fa fa-eye"></i></a>
+                <a href="{{ route('post.edit',$post->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
 
-                <a href="{{ route('post-comment.post',$post->id) }}" class="btn btn-primary">Comentarios</a>
+                <a href="{{ route('post-comment.post',$post->id) }}" class="btn btn-primary"><i class="fa fa-comment"></i></a>
 
                 <button data-toggle="modal" data-target="#deleteModal" data-id="{{ $post->id }}"
-                    class="btn btn-danger">Eliminar</button>
+                    class="btn btn-danger"><i class="fa fa-trash"></i></button>
 
             </td>
         </tr>
