@@ -9,7 +9,7 @@ class UpdatePostPut extends FormRequest
 
     public function messages(){
         return [
-            'title.required' => "El titulo es requerido para todo"
+            'title.required' => __("messages.titlepost")
         ];
     }
     
