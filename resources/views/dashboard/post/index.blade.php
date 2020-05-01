@@ -7,7 +7,7 @@
 </a>
 
 
-<a class="btn btn-success mt-3 mb-3" href="">
+<a class="btn btn-success mt-3 mb-3" href="{{ route('post.export') }}">
     <i class="fa fa-file-excel"></i>Exportar
 </a>
 

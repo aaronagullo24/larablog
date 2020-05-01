@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use App\PostImage;
 use App\Helpers\CustomUrl;
+use App\Exports\PostsExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
 use App\Http\Requests\UpdatePostPut;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -150,6 +152,10 @@ class PostController extends Controller
         $post = Post::create($requestData);
         $post->tags()->sync($request->tags_id);
         return back()->with('status', 'Post Creado con exito');
+    }
+
+    public function export(){
+        return Excel::download(new PostsExport,'posts.xlsx');
     }
 
     /**

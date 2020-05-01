@@ -73,6 +73,7 @@ Route::get('/detail/{id}','web\WebController@detail');
 
 Route::get('/post-category/{id}','web\WebController@post_category');
 
+Route::get('dashboard/excel/post-export','dashboard\PostController@export')->name('post.export');
 
 Route::get('/contact','web\WebController@contact');
 
