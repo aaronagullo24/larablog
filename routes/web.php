@@ -82,5 +82,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/image', 'PaquetesController@image')->name('image');
 Route::get('/chart', 'PaquetesController@charts')->name('chart');
-
+Route::get('/qr_generate', 'PaquetesController@qr_generate')->name('qr_generate');
 
