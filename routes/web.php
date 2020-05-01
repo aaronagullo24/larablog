@@ -80,5 +80,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/image', 'PaquetesController@image')->name('image');
 Route::get('/chart', 'PaquetesController@charts')->name('chart');
+
 
