@@ -79,3 +79,6 @@ Route::get('/contact','web\WebController@contact');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/chart', 'PaquetesController@charts')->name('chart');
+
