@@ -88,3 +88,4 @@ Route::get('dashboard/excel/post-import','dashboard\PostController@import');
 Route::get('/translate','PaquetesController@translate')->name('translate');
 Route::get('/strip_create_customer','PaquetesController@strip_create_customer')->name('strip_create_customer');
 Route::get('/stripe_payment_method_register','PaquetesController@stripe_payment_method_register')->name('stripe_payment_method_register');
+Route::get('/stripe_payment_method_create','PaquetesController@stripe_payment_method_create')->name('stripe_payment_method_create');

@@ -75,4 +75,10 @@ class PaquetesController extends Controller
             'intent' => $user->createSetupIntent()
         ]);
     }
+
+    public function stripe_payment_method_create()
+    {
+        $user = User::find(3);
+        $user->addPaymentMethod('pm_1GeelwKrp59k4j6rW0pIqfz5');
+    }
 }
