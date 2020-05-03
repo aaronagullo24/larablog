@@ -86,3 +86,4 @@ Route::get('/chart', 'PaquetesController@charts')->name('chart');
 Route::get('/qr_generate', 'PaquetesController@qr_generate')->name('qr_generate');
 Route::get('dashboard/excel/post-import','dashboard\PostController@import');
 Route::get('/translate','PaquetesController@translate')->name('translate');
+Route::get('/strip_create_customer','PaquetesController@strip_create_customer')->name('strip_create_customer');

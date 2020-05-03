@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Charts\MyChart;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -58,5 +59,12 @@ class PaquetesController extends Controller
         $tr->setSource('es');
         //$tr->setTarget('en');
         echo $tr->translate('Hola mundo');
+    }
+
+    public function strip_create_customer()
+    {
+        $user = User::find(3);
+        $stripCustomer = $user->createAsStripeCustomer();
+        dd($stripCustomer);
     }
 }
