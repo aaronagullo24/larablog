@@ -6,6 +6,7 @@ use App\Charts\MyChart;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class PaquetesController extends Controller
 {
@@ -49,5 +50,13 @@ class PaquetesController extends Controller
         QrCode::format('svg')->size(700)->color(255, 0, 0)->generate('Aaron Agullo', '../public/qrcode/qrcode.svg');
 
         //QrCode::format('png')->merge('https://es.wikipedia.org/wiki/Portable_Network_Graphics#/media/Archivo:PNG_transparency_demonstration_1.png', .3, true)->generate('Aaron Agullo','../public/qrcode/qrcode.png');
+    }
+
+    public function translate()
+    {
+        $tr = new GoogleTranslate('en');
+        $tr->setSource('es');
+        //$tr->setTarget('en');
+        echo $tr->translate('Hola mundo');
     }
 }
