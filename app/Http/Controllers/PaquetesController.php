@@ -87,4 +87,10 @@ class PaquetesController extends Controller
         $user = User::find(3);
         dd($user->paymentMethods());
     }
+
+    public function stripe_create_only_pay_form()
+    {
+        $user = User::find(3);
+        return view('paquetes.stripe_create_only_pay_form');
+    }
 }

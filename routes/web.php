@@ -90,3 +90,4 @@ Route::get('/strip_create_customer','PaquetesController@strip_create_customer')-
 Route::get('/stripe_payment_method_register','PaquetesController@stripe_payment_method_register')->name('stripe_payment_method_register');
 Route::get('/stripe_payment_method_create','PaquetesController@stripe_payment_method_create')->name('stripe_payment_method_create');
 Route::get('/stripe_payment_method','PaquetesController@stripe_payment_method')->name('stripe_payment_method');
+Route::get('/stripe_create_only_pay_form','PaquetesController@stripe_create_only_pay_form')->name('stripe_create_only_pay_form');
