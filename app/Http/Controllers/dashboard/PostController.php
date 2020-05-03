@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostPost;
 use App\Http\Requests\UpdatePostPut;
+use App\Imports\PostsImport;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Auth\Events\Validated;
@@ -152,6 +153,12 @@ class PostController extends Controller
         $post = Post::create($requestData);
         $post->tags()->sync($request->tags_id);
         return back()->with('status', 'Post Creado con exito');
+    }
+    public function import(){
+
+        Excel::import(new PostsImport,'posts.xlsx');
+
+        return "Importado!";
     }
 
     public function export(){
