@@ -67,4 +67,12 @@ class PaquetesController extends Controller
         $stripCustomer = $user->createAsStripeCustomer();
         dd($stripCustomer);
     }
+
+    public function stripe_payment_method_register()
+    {
+        $user = User::find(3);
+        return view('paquetes.stripe_payment_method_register', [
+            'intent' => $user->createSetupIntent()
+        ]);
+    }
 }
