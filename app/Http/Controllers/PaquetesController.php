@@ -94,9 +94,17 @@ class PaquetesController extends Controller
         return view('paquetes.stripe_create_only_pay_form');
     }
 
-    public function stripe_create_only_pay(){
+    public function stripe_create_only_pay()
+    {
         $user = User::find(3);
-        $stripeCharge=$user->charge(5040,"pm_1GezwEKrp59k4j6r8Ag5rb3f");
+        $stripeCharge = $user->charge(5040, "pm_1GezwEKrp59k4j6r8Ag5rb3f");
         dd($stripeCharge);
+    }
+
+    public function stripe_create_suscription()
+    {
+        $user = User::find(3);
+        $paymentMethod=$user->defaultPaymentMethod();
+        $user->newSubscription('default','plan_HDRF85RBU5djcV')->create($paymentMethod->id);
     }
 }
