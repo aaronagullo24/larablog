@@ -1,61 +1,48 @@
-<template lang="es">
-    <div class="col-8 offset-2">
-        <div class="card">
-            <div class="card-header">
-                <img src="/image/logo.png" alt="" class="logo_200 mx-auto d-block">
-            </div>
-            <div class="card-body">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Nombre</span>
-                    </div>
-                    <input type="text" class="form-control" v-model="name"/>
-                </div>
+<template>
+  <div class="col-8 offset-2">
+    <form>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input v-model="form.name" type="text" class="form-control" />
+      </div>
 
+      <div class="form-group">
+        <label>Apellido</label>
+        <input v-model="form.surname" type="text" class="form-control" />
+      </div>
 
-                <div class="input-group mt-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Apellido</span>
-                    </div>
-                    <input type="text" class="form-control" v-model="surname"/>
-                </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input v-model="form.email" type="text" class="form-control" />
+      </div>
 
-                <div class="input-group mt-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Email</span>
-                    </div>
-                    <input type="email" class="form-control" v-model="email"/>
-                </div>
+      <div class="form-group">
+        <label>Telefono</label>
+        <input v-model="form.phone" type="text" class="form-control" />
+      </div>
 
-                <div class="input-group mt-3">
-                    <textarea class="form-control" placeholder="Comentarios..." v-model="content"></textarea>
-                </div>
-                <button @click="saveContact" class="btn btn-primary float-right mt-3 btn-lg">Enviar</button>
-            </div>
-        </div>
-    </div>
+      <div class="form-group">
+        <label>Contenido</label>
+        <textarea v-model="form.content" class="form-control" row="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
 </template>
 
 <script>
-    export default {
-        created() { },
-        methods: {
-            saveContact: function () {
-                console.log(this.name);
-                console.log(this.surname);
-                console.log(this.email);
-                console.log(this.content);
-
-                return;
-            }
-        },
-        data: function () {
-            return {
-                name:"",
-                surname:"",
-                email:"",
-                content:"contenido",
-            };
-        }
+export default {
+  data() {
+    return {
+      form: {
+        name: "Aaron",
+        surname: "",
+        email: "",
+        phone: "",
+        content: ""
+      }
     };
+  }
+};
 </script>
