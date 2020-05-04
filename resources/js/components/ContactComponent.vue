@@ -1,6 +1,6 @@
 <template>
   <div class="col-8 offset-2">
-    <form>
+    <form @submit.prevent="onSubmit">
       <div class="form-group">
         <label>Nombre</label>
         <input v-model="form.name" type="text" class="form-control" />
@@ -23,7 +23,7 @@
 
       <div class="form-group">
         <label>Contenido</label>
-        <textarea v-model="form.content" class="form-control" row="3"></textarea>
+        <textarea v-model="form.content" class="form-control" rows="3"></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Enviar</button>
@@ -43,6 +43,11 @@ export default {
         content: ""
       }
     };
+  },
+  methods:{
+      onSubmit(){
+          console.log("enviado");
+      }
   }
 };
 </script>
