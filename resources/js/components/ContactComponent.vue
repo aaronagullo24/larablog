@@ -44,10 +44,22 @@ export default {
       }
     };
   },
-  methods:{
-      onSubmit(){
-          console.log("enviado");
-      }
+  methods: {
+    onSubmit() {
+      console.log("enviado " + this.formValid);
+    }
+  },
+
+  computed: {
+    formValid() {
+      return (
+        this.form.name.length > 0 &&
+        this.form.surname.length > 0 &&
+        this.form.phone.length > 0 &&
+        this.form.email.length > 0 &&
+        this.form.content.length > 0
+      );
+    }
   }
 };
 </script>

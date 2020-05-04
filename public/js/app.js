@@ -2019,7 +2019,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
-      console.log("enviado");
+      console.log("enviado " + this.formValid);
+    }
+  },
+  computed: {
+    formValid: function formValid() {
+      return this.form.name.length > 0 && this.form.surname.length > 0 && this.form.phone.length > 0 && this.form.email.length > 0 && this.form.content.length > 0;
     }
   }
 });
