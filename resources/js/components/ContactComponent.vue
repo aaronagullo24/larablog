@@ -1,6 +1,9 @@
 <template>
   <div class="col-8 offset-2">
     <form @submit.prevent="onSubmit">
+
+        <BaseInput label="Nombre"></BaseInput>
+
       <div class="form-group">
         <label>Nombre</label>
         <input v-model="form.name" type="text" class="form-control" />
@@ -13,7 +16,7 @@
 
       <div class="form-group">
         <label>Email</label>
-        <input v-model="form.email" type="text" class="form-control" />
+        <input v-model="form.email" type="email" class="form-control" />
       </div>
 
       <div class="form-group">
@@ -32,7 +35,14 @@
 </template>
 
 <script>
+
+import BaseInput from "../components/BaseInput.vue";
+
 export default {
+  components: {
+    BaseInput
+  },
+
   data() {
     return {
       form: {
