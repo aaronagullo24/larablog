@@ -4,7 +4,7 @@
       <BaseInput label="Nombre" v-model="form.name"></BaseInput>
       <BaseInput label="Apellido" v-model="form.surname"></BaseInput>
       <BaseInput label="Email" type="email" v-model="form.email"></BaseInput>
-      <BaseInput label="Telefono" v-model="form.phone"></BaseInput>
+      <BaseInput label="Telefono" :mask="'(###) ###-####'"  v-model="form.phone"></BaseInput>
 
       <div class="form-group">
         <label>Contenido</label>

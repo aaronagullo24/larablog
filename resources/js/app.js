@@ -8,6 +8,7 @@ require('./bootstrap');
 const ClassicEditor=require('@ckeditor/ckeditor5-build-classic');
 import router from './assets/router.js';
 
+import VueMask from 'v-mask';
 
 var MyUploadAdapter = require("./assets/ckeditor/MyUploadAdapter.js");
 
@@ -45,6 +46,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component(
     'post-list-default', require('./components/PostListDefaultComponent.vue').default
 );
+
+Vue.use(VueMask);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
