@@ -2028,24 +2028,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2054,7 +2036,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        name: 'Aaron',
+        name: "Aaron",
         surname: "",
         email: "",
         phone: "",
@@ -2064,7 +2046,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
-      console.log("enviado " + this.form.name);
+      if (this.formValid) {
+        console.log("enviado");
+      } else {
+        console.log("no enviado");
+      }
     }
   },
   computed: {
@@ -38165,85 +38151,38 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _vm._m(0),
+        _c("BaseInput", {
+          attrs: { label: "Apellido" },
+          model: {
+            value: _vm.form.surname,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "surname", $$v)
+            },
+            expression: "form.surname"
+          }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Apellido")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.surname,
-                expression: "form.surname"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.form.surname },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "surname", $event.target.value)
-              }
-            }
-          })
-        ]),
+        _c("BaseInput", {
+          attrs: { label: "Email", type: "email" },
+          model: {
+            value: _vm.form.email,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "email", $$v)
+            },
+            expression: "form.email"
+          }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Email")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.email,
-                expression: "form.email"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "email" },
-            domProps: { value: _vm.form.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "email", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Telefono")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.phone,
-                expression: "form.phone"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.form.phone },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "phone", $event.target.value)
-              }
-            }
-          })
-        ]),
+        _c("BaseInput", {
+          attrs: { label: "Telefono" },
+          model: {
+            value: _vm.form.phone,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "phone", $$v)
+            },
+            expression: "form.phone"
+          }
+        }),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", [_vm._v("Contenido")]),
@@ -38281,18 +38220,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Nombre")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "form-control", attrs: { type: "text" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

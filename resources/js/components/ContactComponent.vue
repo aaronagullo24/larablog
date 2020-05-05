@@ -1,28 +1,10 @@
 <template>
   <div class="col-8 offset-2">
     <form @submit.prevent="onSubmit">
-
-        <BaseInput label="Nombre" v-model="form.name"></BaseInput>
-
-      <div class="form-group">
-        <label>Nombre</label>
-        <input type="text" class="form-control" />
-      </div>
-
-      <div class="form-group">
-        <label>Apellido</label>
-        <input v-model="form.surname" type="text" class="form-control" />
-      </div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input v-model="form.email" type="email" class="form-control" />
-      </div>
-
-      <div class="form-group">
-        <label>Telefono</label>
-        <input v-model="form.phone" type="text" class="form-control" />
-      </div>
+      <BaseInput label="Nombre" v-model="form.name"></BaseInput>
+      <BaseInput label="Apellido" v-model="form.surname"></BaseInput>
+      <BaseInput label="Email" type="email" v-model="form.email"></BaseInput>
+      <BaseInput label="Telefono" v-model="form.phone"></BaseInput>
 
       <div class="form-group">
         <label>Contenido</label>
@@ -35,7 +17,6 @@
 </template>
 
 <script>
-
 import BaseInput from "../components/BaseInput.vue";
 
 export default {
@@ -45,7 +26,7 @@ export default {
   data() {
     return {
       form: {
-        name: 'Aaron',
+        name: "Aaron",
         surname: "",
         email: "",
         phone: "",
@@ -55,7 +36,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("enviado " + this.form.name);
+      if (this.formValid) {
+        console.log("enviado");
+      } else {
+        console.log("no enviado");
+      }
     }
   },
 
