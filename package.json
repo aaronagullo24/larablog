@@ -28,6 +28,7 @@
         "@ckeditor/ckeditor5-build-classic": "^18.0.0",
         "@fortawesome/fontawesome-free": "^5.13.0",
         "v-mask": "^2.1.0",
-        "vue-plain-pagination": "^0.3.0"
+        "vue-plain-pagination": "^0.3.0",
+        "vuelidate": "^0.7.5"
     }
 }

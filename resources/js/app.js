@@ -10,6 +10,8 @@ import router from './assets/router.js';
 
 import VueMask from 'v-mask';
 
+import Vuelidate from 'vuelidate';
+
 var MyUploadAdapter = require("./assets/ckeditor/MyUploadAdapter.js");
 
 
@@ -48,6 +50,8 @@ Vue.component(
 );
 
 Vue.use(VueMask);
+
+Vue.use(Vuelidate);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
