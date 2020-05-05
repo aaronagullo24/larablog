@@ -1934,7 +1934,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     label: {
       type: String,
-      requerid: true
+      required: true
     },
     type: {
       type: String,
@@ -1942,6 +1942,10 @@ __webpack_require__.r(__webpack_exports__);
       validator: function validator(value) {
         return ["text", "email", "password"].includes(value);
       }
+    },
+    value: {
+      type: String,
+      required: true
     }
   }
 });
@@ -2050,7 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        name: "Aaron",
+        name: 'Aaron',
         surname: "",
         email: "",
         phone: "",
@@ -2060,7 +2064,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
-      console.log("enviado " + this.formValid);
+      console.log("enviado " + this.form.name);
     }
   },
   computed: {
@@ -38043,7 +38047,15 @@ var render = function() {
   return _c("div", { staticClass: "form-group" }, [
     _c("label", [_vm._v(_vm._s(_vm.label))]),
     _vm._v(" "),
-    _c("input", { staticClass: "form-control", attrs: { type: _vm.type } })
+    _c("input", {
+      staticClass: "form-control",
+      attrs: { type: _vm.type },
+      on: {
+        input: function($event) {
+          return _vm.$emit("input", $event.target.value)
+        }
+      }
+    })
   ])
 }
 var staticRenderFns = []
@@ -38142,33 +38154,18 @@ var render = function() {
         }
       },
       [
-        _c("BaseInput", { attrs: { label: "Nombre" } }),
+        _c("BaseInput", {
+          attrs: { label: "Nombre" },
+          model: {
+            value: _vm.form.name,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "name", $$v)
+            },
+            expression: "form.name"
+          }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Nombre")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.name,
-                expression: "form.name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.form.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "name", $event.target.value)
-              }
-            }
-          })
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c("label", [_vm._v("Apellido")]),
@@ -38284,7 +38281,18 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", [_vm._v("Nombre")]),
+      _vm._v(" "),
+      _c("input", { staticClass: "form-control", attrs: { type: "text" } })
+    ])
+  }
+]
 render._withStripped = true
 
 

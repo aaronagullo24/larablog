@@ -2,11 +2,11 @@
   <div class="col-8 offset-2">
     <form @submit.prevent="onSubmit">
 
-        <BaseInput label="Nombre"></BaseInput>
+        <BaseInput label="Nombre" v-model="form.name"></BaseInput>
 
       <div class="form-group">
         <label>Nombre</label>
-        <input v-model="form.name" type="text" class="form-control" />
+        <input type="text" class="form-control" />
       </div>
 
       <div class="form-group">
@@ -42,11 +42,10 @@ export default {
   components: {
     BaseInput
   },
-
   data() {
     return {
       form: {
-        name: "Aaron",
+        name: 'Aaron',
         surname: "",
         email: "",
         phone: "",
@@ -56,7 +55,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("enviado " + this.formValid);
+      console.log("enviado " + this.form.name);
     }
   },
 
