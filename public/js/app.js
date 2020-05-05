@@ -2128,8 +2128,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     formValid: function formValid() {
-      console.log(this.$v.form.name.$invalid);
-      return this.form.name.length > 0 && this.form.surname.length > 0 && this.form.phone.length > 0 && this.form.email.length > 0 && this.form.content.length > 0;
+      return !this.$v.$invalid;
+      /*return (
+        this.form.name.length > 0 &&
+        this.form.surname.length > 0 &&
+        this.form.phone.length > 0 &&
+        this.form.email.length > 0 &&
+        this.form.content.length > 0
+      );*/
     }
   }
 });
@@ -38782,7 +38788,10 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn btn-primary",
+            attrs: { disabled: !_vm.formValid, type: "submit" }
+          },
           [_vm._v("Enviar")]
         )
       ],

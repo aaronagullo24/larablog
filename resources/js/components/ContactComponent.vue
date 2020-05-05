@@ -29,7 +29,7 @@
         ></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button :disabled="!formValid" type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </div>
 </template>
@@ -88,15 +88,15 @@ export default {
 
   computed: {
     formValid() {
-      console.log(this.$v.form.name.$invalid);
+      return !this.$v.$invalid;
 
-      return (
+      /*return (
         this.form.name.length > 0 &&
         this.form.surname.length > 0 &&
         this.form.phone.length > 0 &&
         this.form.email.length > 0 &&
         this.form.content.length > 0
-      );
+      );*/
     }
   }
 };
