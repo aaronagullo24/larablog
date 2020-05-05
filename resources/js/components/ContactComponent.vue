@@ -5,7 +5,7 @@
       {{$v}}
       <BaseInput label="Apellido" v-model="form.surname"></BaseInput>
       <BaseInput label="Email" type="email" v-model="form.email"></BaseInput>
-      <BaseInput label="Telefono" :mask="'(###) ###-####'"  v-model="form.phone"></BaseInput>
+      <BaseInput label="Telefono" :mask="'(###) ###-####'" v-model="form.phone"></BaseInput>
 
       <div class="form-group">
         <label>Contenido</label>
@@ -19,7 +19,7 @@
 
 <script>
 import BaseInput from "../components/BaseInput.vue";
-import { required,minLength} from 'vuelidate/lib/validators';
+import { required, minLength, email } from "vuelidate/lib/validators";
 
 export default {
   components: {
@@ -36,11 +36,26 @@ export default {
       }
     };
   },
-  validations:{
-    form:{
-      name:{
+  validations: {
+    form: {
+      name: {
         required,
-        minLength:minLength(3)
+        minLength: minLength(3)
+      },
+      surname: {
+        required,
+        email
+      },
+      email: {
+        required,
+        minLength: minLength(3)
+      },
+      phone: {
+        required,
+        minLength: minLength(9)
+      },
+      content: {
+        required
       }
     }
   },
@@ -56,7 +71,6 @@ export default {
 
   computed: {
     formValid() {
-
       console.log(this.$v.form.name.$invalid);
 
       return (
