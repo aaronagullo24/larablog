@@ -1943,6 +1943,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     label: {
@@ -1958,6 +1966,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     value: {
       type: String,
+      required: true
+    },
+    validator: {
+      type: Object,
       required: true
     },
     mask: {
@@ -2048,6 +2060,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2073,11 +2102,11 @@ __webpack_require__.r(__webpack_exports__);
       },
       surname: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
-        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["email"]
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(3)
       },
       email: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(3)
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["email"]
       },
       phone: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
@@ -38546,6 +38575,10 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
+          class: {
+            "is-valid": !_vm.validator.$error && _vm.validator.$dirty,
+            "is-invalid": _vm.validator.$error
+          },
           attrs: { type: _vm.type },
           on: {
             input: function($event) {
@@ -38555,6 +38588,10 @@ var render = function() {
         })
       : _c("input", {
           staticClass: "form-control",
+          class: {
+            "is-valid": !_vm.validator.$error && _vm.validator.$dirty,
+            "is-invalid": _vm.validator.$error
+          },
           attrs: { type: _vm.type },
           on: {
             input: function($event) {
@@ -38661,46 +38698,54 @@ var render = function() {
       },
       [
         _c("BaseInput", {
-          attrs: { label: "Nombre" },
+          attrs: { label: "Nombre", validator: _vm.$v.form.name },
           model: {
-            value: _vm.form.name,
+            value: _vm.$v.form.name.$model,
             callback: function($$v) {
-              _vm.$set(_vm.form, "name", $$v)
+              _vm.$set(_vm.$v.form.name, "$model", $$v)
             },
-            expression: "form.name"
-          }
-        }),
-        _vm._v("\n    " + _vm._s(_vm.$v) + "\n    "),
-        _c("BaseInput", {
-          attrs: { label: "Apellido" },
-          model: {
-            value: _vm.form.surname,
-            callback: function($$v) {
-              _vm.$set(_vm.form, "surname", $$v)
-            },
-            expression: "form.surname"
+            expression: "$v.form.name.$model"
           }
         }),
         _vm._v(" "),
         _c("BaseInput", {
-          attrs: { label: "Email", type: "email" },
+          attrs: { label: "Apellido", validator: _vm.$v.form.surname },
           model: {
-            value: _vm.form.email,
+            value: _vm.$v.form.surname.$model,
             callback: function($$v) {
-              _vm.$set(_vm.form, "email", $$v)
+              _vm.$set(_vm.$v.form.surname, "$model", $$v)
             },
-            expression: "form.email"
+            expression: "$v.form.surname.$model"
           }
         }),
         _vm._v(" "),
         _c("BaseInput", {
-          attrs: { label: "Telefono", mask: "(###) ###-####" },
+          attrs: {
+            label: "Email",
+            type: "email",
+            validator: _vm.$v.form.email
+          },
           model: {
-            value: _vm.form.phone,
+            value: _vm.$v.form.email.$model,
             callback: function($$v) {
-              _vm.$set(_vm.form, "phone", $$v)
+              _vm.$set(_vm.$v.form.email, "$model", $$v)
             },
-            expression: "form.phone"
+            expression: "$v.form.email.$model"
+          }
+        }),
+        _vm._v(" "),
+        _c("BaseInput", {
+          attrs: {
+            label: "Telefono",
+            mask: "(##) ###-###-###",
+            validator: _vm.$v.form.phone
+          },
+          model: {
+            value: _vm.$v.form.phone.$model,
+            callback: function($$v) {
+              _vm.$set(_vm.$v.form.phone, "$model", $$v)
+            },
+            expression: "$v.form.phone.$model"
           }
         }),
         _vm._v(" "),
@@ -38712,19 +38757,24 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.form.content,
-                expression: "form.content"
+                value: _vm.$v.form.content.$model,
+                expression: "$v.form.content.$model"
               }
             ],
             staticClass: "form-control",
+            class: {
+              "is-valid":
+                !_vm.$v.form.content.$error && _vm.$v.form.content.$dirty,
+              "is-invalid": _vm.$v.form.content.$error
+            },
             attrs: { rows: "3" },
-            domProps: { value: _vm.form.content },
+            domProps: { value: _vm.$v.form.content.$model },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.form, "content", $event.target.value)
+                _vm.$set(_vm.$v.form.content, "$model", $event.target.value)
               }
             }
           })

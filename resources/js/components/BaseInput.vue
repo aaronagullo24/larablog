@@ -4,6 +4,10 @@
     <input
       v-if="mask"
       :type="type"
+      :class="{
+        'is-valid':!validator.$error && validator.$dirty,
+        'is-invalid':validator.$error,
+        }"
       v-mask="mask"
       v-on:input="$emit('input',$event.target.value)"
       class="form-control"
@@ -12,6 +16,10 @@
     <input
       v-else
       :type="type"
+      :class="{
+        'is-valid':!validator.$error && validator.$dirty,
+        'is-invalid':validator.$error,
+        }"
       v-on:input="$emit('input',$event.target.value)"
       class="form-control"
     />
@@ -33,6 +41,10 @@ export default {
     },
     value: {
       type: String,
+      required: true
+    },
+    validator: {
+      type: Object,
       required: true
     },
     mask: {

@@ -1,15 +1,32 @@
 <template>
   <div class="col-8 offset-2">
     <form @submit.prevent="onSubmit">
-      <BaseInput label="Nombre" v-model="form.name"></BaseInput>
-      {{$v}}
-      <BaseInput label="Apellido" v-model="form.surname"></BaseInput>
-      <BaseInput label="Email" type="email" v-model="form.email"></BaseInput>
-      <BaseInput label="Telefono" :mask="'(###) ###-####'" v-model="form.phone"></BaseInput>
+      <BaseInput label="Nombre" v-model="$v.form.name.$model" :validator="$v.form.name"></BaseInput>
+      <BaseInput label="Apellido" v-model="$v.form.surname.$model" :validator="$v.form.surname"></BaseInput>
+      <BaseInput
+        label="Email"
+        type="email"
+        v-model="$v.form.email.$model"
+        :validator="$v.form.email"
+      ></BaseInput>
+      <BaseInput
+        label="Telefono"
+        :mask="'(##) ###-###-###'"
+        v-model="$v.form.phone.$model"
+        :validator="$v.form.phone"
+      ></BaseInput>
 
       <div class="form-group">
         <label>Contenido</label>
-        <textarea v-model="form.content" class="form-control" rows="3"></textarea>
+        <textarea
+          :class="{
+        'is-valid':!$v.form.content.$error && $v.form.content.$dirty,
+        'is-invalid':$v.form.content.$error,
+        }"
+          v-model="$v.form.content.$model"
+          class="form-control"
+          rows="3"
+        ></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Enviar</button>
@@ -44,11 +61,11 @@ export default {
       },
       surname: {
         required,
-        email
+        minLength: minLength(3)
       },
       email: {
         required,
-        minLength: minLength(3)
+        email
       },
       phone: {
         required,
