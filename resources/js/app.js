@@ -12,6 +12,8 @@ import VueMask from 'v-mask';
 
 import Vuelidate from 'vuelidate';
 
+import VueAWN from "vue-awesome-notifications"
+
 var MyUploadAdapter = require("./assets/ckeditor/MyUploadAdapter.js");
 
 
@@ -52,6 +54,8 @@ Vue.component(
 Vue.use(VueMask);
 
 Vue.use(Vuelidate);
+
+Vue.use(VueAWN);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

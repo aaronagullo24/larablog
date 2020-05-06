@@ -87,6 +87,7 @@ export default {
 
       this.$v.$reset();
       document.querySelectorAll("form.contact input, form.contact textarea").forEach(e => e.value="")
+       this.$awn.info("formulario reiniciado");
     },
     onSubmit() {
       if (!this.formValid) return;
@@ -100,6 +101,7 @@ export default {
         })
         .then(function(respuesta) {
           console.log(respuesta.data);
+           this.$awn.success("Contacto creado con exito");
         });
     }
   },
@@ -119,3 +121,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  @import '~vue-awesome-notifications/dist/styles/style.css';
+</style>
