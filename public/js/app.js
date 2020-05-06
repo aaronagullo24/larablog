@@ -2078,6 +2078,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39386,124 +39394,140 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-8 offset-2" }, [
-    _c(
-      "form",
-      {
-        staticClass: "contact",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.onSubmit($event)
-          }
-        }
-      },
-      [
-        _c("BaseInput", {
-          attrs: { label: "Nombre", validator: _vm.$v.form.name },
-          model: {
-            value: _vm.$v.form.name.$model,
-            callback: function($$v) {
-              _vm.$set(_vm.$v.form.name, "$model", $$v)
-            },
-            expression: "$v.form.name.$model"
-          }
-        }),
-        _vm._v(" "),
-        _c("BaseInput", {
-          attrs: { label: "Apellido", validator: _vm.$v.form.surname },
-          model: {
-            value: _vm.$v.form.surname.$model,
-            callback: function($$v) {
-              _vm.$set(_vm.$v.form.surname, "$model", $$v)
-            },
-            expression: "$v.form.surname.$model"
-          }
-        }),
-        _vm._v(" "),
-        _c("BaseInput", {
-          attrs: {
-            label: "Email",
-            type: "email",
-            validator: _vm.$v.form.email
-          },
-          model: {
-            value: _vm.$v.form.email.$model,
-            callback: function($$v) {
-              _vm.$set(_vm.$v.form.email, "$model", $$v)
-            },
-            expression: "$v.form.email.$model"
-          }
-        }),
-        _vm._v(" "),
-        _c("BaseInput", {
-          attrs: {
-            label: "Telefono",
-            mask: "(##) ###-###-###",
-            validator: _vm.$v.form.phone
-          },
-          model: {
-            value: _vm.$v.form.phone.$model,
-            callback: function($$v) {
-              _vm.$set(_vm.$v.form.phone, "$model", $$v)
-            },
-            expression: "$v.form.phone.$model"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Contenido")]),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.$v.form.content.$model,
-                expression: "$v.form.content.$model"
-              }
-            ],
-            staticClass: "form-control",
-            class: {
-              "is-valid":
-                !_vm.$v.form.content.$error && _vm.$v.form.content.$dirty,
-              "is-invalid": _vm.$v.form.content.$error
-            },
-            attrs: { rows: "3" },
-            domProps: { value: _vm.$v.form.content.$model },
+    _c("div", { staticClass: "card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "form",
+          {
+            staticClass: "contact",
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.$v.form.content, "$model", $event.target.value)
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.onSubmit($event)
               }
             }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: { disabled: !_vm.formValid, type: "submit" }
           },
-          [_vm._v("Enviar")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-danger btn-sm",
-            on: { click: _vm.resetForm }
-          },
-          [_vm._v("Limpiar")]
+          [
+            _c("BaseInput", {
+              attrs: { label: "Nombre", validator: _vm.$v.form.name },
+              model: {
+                value: _vm.$v.form.name.$model,
+                callback: function($$v) {
+                  _vm.$set(_vm.$v.form.name, "$model", $$v)
+                },
+                expression: "$v.form.name.$model"
+              }
+            }),
+            _vm._v(" "),
+            _c("BaseInput", {
+              attrs: { label: "Apellido", validator: _vm.$v.form.surname },
+              model: {
+                value: _vm.$v.form.surname.$model,
+                callback: function($$v) {
+                  _vm.$set(_vm.$v.form.surname, "$model", $$v)
+                },
+                expression: "$v.form.surname.$model"
+              }
+            }),
+            _vm._v(" "),
+            _c("BaseInput", {
+              attrs: {
+                label: "Email",
+                type: "email",
+                validator: _vm.$v.form.email
+              },
+              model: {
+                value: _vm.$v.form.email.$model,
+                callback: function($$v) {
+                  _vm.$set(_vm.$v.form.email, "$model", $$v)
+                },
+                expression: "$v.form.email.$model"
+              }
+            }),
+            _vm._v(" "),
+            _c("BaseInput", {
+              attrs: {
+                label: "Telefono",
+                mask: "(##) ###-###-###",
+                validator: _vm.$v.form.phone
+              },
+              model: {
+                value: _vm.$v.form.phone.$model,
+                callback: function($$v) {
+                  _vm.$set(_vm.$v.form.phone, "$model", $$v)
+                },
+                expression: "$v.form.phone.$model"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Contenido")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$v.form.content.$model,
+                    expression: "$v.form.content.$model"
+                  }
+                ],
+                staticClass: "form-control",
+                class: {
+                  "is-valid":
+                    !_vm.$v.form.content.$error && _vm.$v.form.content.$dirty,
+                  "is-invalid": _vm.$v.form.content.$error
+                },
+                attrs: { rows: "3" },
+                domProps: { value: _vm.$v.form.content.$model },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.$v.form.content, "$model", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { disabled: !_vm.formValid, type: "submit" }
+              },
+              [_c("i", { staticClass: "fa fa-envelope" }), _vm._v(" Enviar")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger btn-sm",
+                on: { click: _vm.resetForm }
+              },
+              [_c("i", { staticClass: "fa fa-redo" }), _vm._v(" Limpiar")]
+            )
+          ],
+          1
         )
-      ],
-      1
-    )
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("i", { staticClass: "fa fa-smile-beam text-success" }),
+      _vm._v(" Contactame\n      ")
+    ])
+  }
+]
 render._withStripped = true
 
 

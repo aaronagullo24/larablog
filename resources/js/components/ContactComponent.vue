@@ -1,5 +1,11 @@
 <template>
   <div class="col-8 offset-2">
+    <div class="card">
+      <div class="card-header">
+          <i class="fa fa-smile-beam text-success"></i> Contactame
+        </div>
+      <div class="card-body">
+        
     <form @submit.prevent="onSubmit" class="contact">
       <BaseInput label="Nombre" v-model="$v.form.name.$model" :validator="$v.form.name"></BaseInput>
       <BaseInput label="Apellido" v-model="$v.form.surname.$model" :validator="$v.form.surname"></BaseInput>
@@ -29,10 +35,12 @@
         ></textarea>
       </div>
 
-      <button :disabled="!formValid" type="submit" class="btn btn-primary">Enviar</button>
-      <button class="btn btn-danger btn-sm" @click="resetForm">Limpiar</button>
+      <button :disabled="!formValid" type="submit" class="btn btn-primary"><i class="fa fa-envelope"></i> Enviar</button>
+      <button class="btn btn-danger btn-sm" @click="resetForm"><i class="fa fa-redo"></i> Limpiar</button>
     </form>
+    </div>
   </div>
+   </div>
 </template>
 
 <script>
