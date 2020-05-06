@@ -2077,6 +2077,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2118,6 +2119,17 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    resetForm: function resetForm() {
+      this.$v.form.name.$model = "";
+      this.$v.form.surname.$model = "";
+      this.$v.form.phone.$model = "";
+      this.$v.form.email.$model = "";
+      this.$v.form.content.$model = "";
+      this.$v.$reset();
+      document.querySelectorAll("form.contact input, form.contact textarea").forEach(function (e) {
+        return e.value = "";
+      });
+    },
     onSubmit: function onSubmit() {
       if (!this.formValid) return;
       axios.post("/api/contact", {
@@ -38700,6 +38712,7 @@ var render = function() {
     _c(
       "form",
       {
+        staticClass: "contact",
         on: {
           submit: function($event) {
             $event.preventDefault()
@@ -38798,6 +38811,15 @@ var render = function() {
             attrs: { disabled: !_vm.formValid, type: "submit" }
           },
           [_vm._v("Enviar")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-danger btn-sm",
+            on: { click: _vm.resetForm }
+          },
+          [_vm._v("Limpiar")]
         )
       ],
       1

@@ -1,6 +1,6 @@
 <template>
   <div class="col-8 offset-2">
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="onSubmit" class="contact">
       <BaseInput label="Nombre" v-model="$v.form.name.$model" :validator="$v.form.name"></BaseInput>
       <BaseInput label="Apellido" v-model="$v.form.surname.$model" :validator="$v.form.surname"></BaseInput>
       <BaseInput
@@ -30,6 +30,7 @@
       </div>
 
       <button :disabled="!formValid" type="submit" class="btn btn-primary">Enviar</button>
+      <button class="btn btn-danger btn-sm" @click="resetForm">Limpiar</button>
     </form>
   </div>
 </template>
@@ -77,6 +78,16 @@ export default {
     }
   },
   methods: {
+    resetForm(){
+      this.$v.form.name.$model=""
+      this.$v.form.surname.$model=""
+      this.$v.form.phone.$model=""
+      this.$v.form.email.$model=""
+      this.$v.form.content.$model=""
+
+      this.$v.$reset();
+      document.querySelectorAll("form.contact input, form.contact textarea").forEach(e => e.value="")
+    },
     onSubmit() {
       if (!this.formValid) return;
       axios
