@@ -21,8 +21,8 @@ class StoreContactPost extends FormRequest
         return [
             'name' => 'required | min:2',
             'surname' => 'required | min:2',
-            'phone' => 'required | min:11',
-            'email' => 'required | email',
+            'phone' => 'required',
+            'email' => 'required',
             'message' => 'required',
         ];
     }

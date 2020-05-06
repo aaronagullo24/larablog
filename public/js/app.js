@@ -2119,11 +2119,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit() {
-      if (this.formValid) {
-        console.log("enviado");
-      } else {
-        console.log("no enviado");
-      }
+      if (!this.formValid) return;
+      axios.post("/api/contact", {
+        name: this.$v.form.name.$model,
+        surname: this.$v.form.surname.$model,
+        email: this.$v.form.email.$model,
+        message: this.$v.form.content.$model,
+        phone: this.$v.form.phone.$model
+      }).then(function (respuesta) {
+        console.log(respuesta.data);
+      });
     }
   },
   computed: {

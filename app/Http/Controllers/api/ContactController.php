@@ -18,7 +18,6 @@ class ContactController extends ApiResponseController
         if ($validator->fails()) {
             return $this->errorResponse($validator->errors());
         } else {
-
             Contact::create($validator->validated());
             return $this->successResponse("Creado correctamente");
         }
