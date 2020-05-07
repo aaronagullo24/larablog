@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('request', function () {
+    $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+    dd($response->json());
+    return "request";
+});
 
 
 
 Route::get('/test', function () {
-    
+
     $string = "      hola mundo Aaron";
     //$string=strtolower(trim($string));    
     //$string = Str::of($string)->afterLast("o")->ascii();
 
-    $string = Str::of($string)->trim()->lower()->replace(" ","-")->ascii();
-    
+    $string = Str::of($string)->trim()->lower()->replace(" ", "-")->ascii();
+
     return $string;
 });
 /*
