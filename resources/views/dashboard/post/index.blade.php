@@ -2,6 +2,8 @@
 
 @section('content')
 
+<x-ejemploinline></x-ejemploinline>
+
 <x-ejemplo message="hola mundo dos" :posts="$posts" class="container"/>
 
 <x-ejemplo message="hola mundo dos" :posts="$posts" class="container">

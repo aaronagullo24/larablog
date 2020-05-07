@@ -5,19 +5,21 @@
     @endisset
 
     @isset($title3)
-   <h3> {{$title3}}</h3>
-@endisset
+        <h3> {{$title3}}</h3>
+    @endisset
 
     {{$message}}
 
     @foreach ($posts as $post)
         {{$post->id}}
     @endforeach
-<ul>
-    @foreach ($my_list('item4') as $item)
-       <li> {{$item}} </li>
-    @endforeach
-</ul>
+
+    <ul>
+        @foreach ($my_list('item4') as $item)
+            <li> {{$item}} </li>
+        @endforeach
+    </ul>
+    
 {{$slot}}
 
 </div>
