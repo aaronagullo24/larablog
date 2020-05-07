@@ -2,6 +2,8 @@
 
 @section('content')
 
+<x-ejemplo message="hola mundo dos" :posts="$posts"/>
+
 <a class="btn btn-success mt-3 mb-3" href="{{ route('post.create') }}">
     <i class="fa fa-plus"></i>Crear
 </a>
