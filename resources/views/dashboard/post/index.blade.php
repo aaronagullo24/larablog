@@ -4,6 +4,20 @@
 
 <x-ejemplo message="hola mundo dos" :posts="$posts" class="container"/>
 
+<x-ejemplo message="hola mundo dos" :posts="$posts" class="container">
+    <p>Titulo del contenido</p>
+
+    <x-slot name="title">
+        <h1>Titulo de nuestro posrt</h1>
+    </x-slot>
+
+
+    <x-slot name="title3">
+        SubTitulo
+    </x-slot>
+
+</x-ejemplo>
+
 <a class="btn btn-success mt-3 mb-3" href="{{ route('post.create') }}">
     <i class="fa fa-plus"></i>Crear
 </a>

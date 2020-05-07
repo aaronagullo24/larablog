@@ -1,4 +1,13 @@
 <div {{$attributes->merge(['class'=>"bg-dark"])}}>
+
+    @isset($title)
+        {{$title}}
+    @endisset
+
+    @isset($title3)
+   <h3> {{$title3}}</h3>
+@endisset
+
     {{$message}}
 
     @foreach ($posts as $post)
@@ -9,4 +18,6 @@
        <li> {{$item}} </li>
     @endforeach
 </ul>
+{{$slot}}
+
 </div>
