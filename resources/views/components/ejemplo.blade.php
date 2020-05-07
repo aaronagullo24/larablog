@@ -1,4 +1,4 @@
-<div>
+<div {{$attributes->merge(['class'=>"bg-dark"])}}>
     {{$message}}
 
     @foreach ($posts as $post)
