@@ -15,10 +15,19 @@ class Ejemplo extends Component
      *
      * @return void
      */
-    public function __construct($message,$posts)
+    public function __construct($message, $posts)
     {
-        $this->message=$message;
-        $this->posts=$posts;
+        $this->message = $message;
+        $this->posts = $posts;
+    }
+    public function my_list($item4)
+    {
+        return [
+            "item1",
+            "item2",
+            "item3",
+            $item4
+        ];
     }
 
     /**
