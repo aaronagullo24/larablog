@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('request', function () {
-    $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
-    dd($response->json());
+   //$response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+
+   $response = Http::post('https://jsonplaceholder.typicode.com/posts',[
+       'user_id'=>1,
+       'name'=>'Aaron'
+   ]);
+
+    dd($response->json()['name']);
     return "request";
 });
 
