@@ -25,19 +25,19 @@ Route::get('request', function () {
     );
     */
 
-    Http::fake();
+    //Http::fake();
 
-    $response = Http::post('https://jsonplaceholder.typicode.com/posts', [
+    $response = Http::timeout(3)->delete('https://jsonplaceholder.typicode.com/posts/1', [
         'user_id' => 1,
         'name' => 'Aaron'
     ]);
 
-
+    /*
     Http::assertSent(function ($request) {
         return $request['name'] !== 'Aaron';
     });
-
-    dd($response->status());
+    */
+    dd($response->body());
     return "request";
 });
 
