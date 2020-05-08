@@ -16,14 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('request', function () {
-   //$response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+    //$response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
 
-   $response = Http::post('https://jsonplaceholder.typicode.com/posts',[
-       'user_id'=>1,
-       'name'=>'Aaron'
-   ]);
+    Http::fake(
+        [
+            'jsonplaceholder.*' => Http::response('Hola respuesta',200)
+        ]
+    );
 
-    dd($response->json()['name']);
+    $response = Http::retry(3,100)->post('https://jsonplaceholder.typicode.com/posts', [
+        'user_id' => 1,
+        'name' => 'Aaron'
+    ]);
+
+    dd($response->status());
     return "request";
 });
 
