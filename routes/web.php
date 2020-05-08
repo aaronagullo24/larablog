@@ -17,17 +17,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('request', function () {
     //$response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
-
+    /*
     Http::fake(
         [
-            'jsonplaceholder.*' => Http::response('Hola respuesta',200)
+            'jsonplaceholder.*' => Http::response('Hola respuesta', 200)
         ]
     );
+    */
 
-    $response = Http::retry(3,100)->post('https://jsonplaceholder.typicode.com/posts', [
+    Http::fake();
+
+    $response = Http::post('https://jsonplaceholder.typicode.com/posts', [
         'user_id' => 1,
         'name' => 'Aaron'
     ]);
+
+
+    Http::assertSent(function ($request) {
+        return $request['name'] !== 'Aaron';
+    });
 
     dd($response->status());
     return "request";
